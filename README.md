@@ -12,6 +12,9 @@ I completed my B.Sc. (2015) in Psychology and Philosophy and my M.Sc. (2018) in 
 
 ## Publications
 
+Klein, Ayal, Eran Hirsch, Ron Eliav, Valentina Pyatkin, Avi Caciularu, and Ido Dagan. ["QASem Parsing: Text-to-text Modeling of QA-based Semantics."](QASem_Parsing_arxiv_version-23.5.22.pdf) Soon on arxiv.
+
+
 Klein, Ayal, Oren Pereg, Daniel Korat, Vasudev Lal, Moshe Wasserblat, and Ido Dagan. ["Opinion-based Relational Pivoting for Cross-domain Aspect Term Extraction."](https://aclanthology.org/2022.wassa-1.11/) In Proceedings of the 12th Workshop on Computational Approaches to Subjectivity, Sentiment & Social Media Analysis, pp. 104-112. 2022.
 
 Weiss, Daniela Brook, Paul Roit, Ayal Klein, Ori Ernst, and Ido Dagan. ["QA-Align: Representing Cross-Text Content Overlap by Aligning Question-Answer Propositions."](https://aclanthology.org/2021.emnlp-main.778/) In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing, pp. 9879-9894. 2021.
@@ -24,13 +27,16 @@ Roit, Paul, Ayal Klein, Daniela Stepanov, Jonathan Mamou, Julian Michael, Gabrie
 
 
 
-## Teaching
+## Teaching Experience
+
+I had a great time teaching in the following courses:
 
 * Teacher Assistant for “Object Oriented Programming” Course (89-111), Bar Ilan University (2019-2020).
 
 * Teacher Assistant for “Discrete Mathematics 1” Course (89-195), Bar Ilan University (2019).
 
 * Teacher Assistant for “Text Understanding” Course (89-565), Bar Ilan University (2018).
+
 
 ### Contact
 
