@@ -4,15 +4,18 @@ Hi, welcome to my homepage.
 
 ## About 
 
-I am a Ph.D researcher in Computer Science in the [Natural Language Processing Lab](http://u.cs.biu.ac.il/~nlp/) at [Bar Ilan University](http://www1.biu.ac.il/indexE.php) under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). 
-Most of my research so far is focused on Semantic Representations, and we are working on devising a natural way to break down the information conveyed by langauge. 
-My research interests are broad and include computational linguistics, semantics and meaning, cognitive psycholinguistics and applied deep learning for NLP.   
+I am a Ph.D researcher in Computer Science in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at [Bar Ilan University](http://www1.biu.ac.il/indexE.php) under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). 
+Most of my research so far is focused on Semantic Representations. Other that that, my research interests are broad and include computational linguistics, semantics and meaning, cognitive psycholinguistics and applied deep learning for NLP.   
 
 I completed my B.Sc. (2015) in Psychology and Philosophy and my M.Sc. (2018) in Computer Science at Bar Ilan University.  
 
+## The QASem project
+
+We have devised a natural way to break down the information conveyed by langauge, using question-answer pairs. Our semantic framework, termed *QASem* (QA-based Semantics), consists of several annotation 'layers' covering different types of textual information or *semantic relations*. Our tool takes in a sentences and outputs a set of QAs that correspond to the basic information units in the sentence. You can take a look at the [QASem demo](https://huggingface.co/spaces/kleinay/qasem-demo) or install it in your python environment through `pip install qasem`. See our [repo](https://github.com/kleinay/QASem) for further details. 
+
 ## Publications
 
-Klein, Ayal, Eran Hirsch, Ron Eliav, Valentina Pyatkin, Avi Caciularu, and Ido Dagan. ["QASem Parsing: Text-to-text Modeling of QA-based Semantics."](QASem_Parsing_arxiv_version-23.5.22.pdf) Soon on arxiv.
+Klein, Ayal, Eran Hirsch, Ron Eliav, Valentina Pyatkin, Avi Caciularu, and Ido Dagan. ["QASem Parsing: Text-to-text Modeling of QA-based Semantics."](https://aclanthology.org/2022.emnlp-main.528/) In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, pp. 7742–7756, Abu Dhabi, United Arab Emirates. Association for Computational Linguistics. 2022.
 
 
 Klein, Ayal, Oren Pereg, Daniel Korat, Vasudev Lal, Moshe Wasserblat, and Ido Dagan. ["Opinion-based Relational Pivoting for Cross-domain Aspect Term Extraction."](https://aclanthology.org/2022.wassa-1.11/) In Proceedings of the 12th Workshop on Computational Approaches to Subjectivity, Sentiment & Social Media Analysis, pp. 104-112. 2022.
@@ -29,7 +32,9 @@ Roit, Paul, Ayal Klein, Daniela Stepanov, Jonathan Mamou, Julian Michael, Gabrie
 
 ## Teaching Experience
 
-I had a great time teaching in the following courses:
+This year (2023) I will be lecturing the “Artificial Neural Networks” course at the neuroscience department, Bar Ilan University.
+
+Previously, I had a great time teaching in the following courses:
 
 * Teacher Assistant for “Object Oriented Programming” Course (89-111), Bar Ilan University (2019-2020).
 
