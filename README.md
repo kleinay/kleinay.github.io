@@ -1,7 +1,7 @@
 # Ayal Klein
 
 Hi, welcome to my homepage.
-![My Portrait Picture](/kleinay.github.io/assets/myportrait3.jpg)
+![My Portrait Picture](/kleinay/kleinay.github.io/assets/myportrait3.jpg)
 
 ## About 
 
