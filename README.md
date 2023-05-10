@@ -1,7 +1,7 @@
 # Ayal Klein
 
 Hi, welcome to my homepage.
-
+![My Portrait Picture logo](/docs/assets/אני לבד 3.png)
 ## About 
 
 I am a Ph.D researcher in Computer Science in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at [Bar Ilan University](http://www1.biu.ac.il/indexE.php) under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). 
