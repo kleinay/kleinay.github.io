@@ -1,11 +1,11 @@
 # Ayal Klein
 
 Hi, welcome to my homepage.
-
+![My Portrait Picture](/docs/assets/myportrait3.jpg)
 
 ## About 
 
-![My Portrait Picture](/docs/assets/myportrait3.jpg){: style="float: right"; margin-left: 10em; width="50"; height="50" }
+
 I am a Ph.D researcher in Computer Science in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at [Bar Ilan University](http://www1.biu.ac.il/indexE.php) under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). 
 Most of my research so far is focused on Semantic Representations. Other that that, my research interests are broad and include computational linguistics, semantics and meaning, cognitive psycholinguistics and applied deep learning for NLP.   
 
