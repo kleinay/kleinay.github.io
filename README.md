@@ -17,6 +17,12 @@ We have devised a natural way to break down the information conveyed by langauge
 
 ## Publications
 
+Roit, Paul, Aviv Slobodkin, Eran Hirsch, Arie Cattan, Ayal Klein, Valentina Pyatkin, and Ido Dagan. ["Explicating the Implicit: Argument Detection Beyond Sentence Boundaries."](https://aclanthology.org/2024.acl-long.863/) In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp. 16394–16409, Bangkok, Thailand. Association for Computational Linguistics.  2024.
+
+
+Pesahov, Leon, Ayal Klein, and Ido Dagan. ["QA-Adj: Adding Adjectives to QA-based Semantics."](https://aclanthology.org/2023.dmr-1.8/) In Proceedings of the Fourth International Workshop on Designing Meaning Representations, pp. 74–88, Nancy, France. Association for Computational Linguistics. 2023.
+
+
 Klein, Ayal, Eran Hirsch, Ron Eliav, Valentina Pyatkin, Avi Caciularu, and Ido Dagan. ["QASem Parsing: Text-to-text Modeling of QA-based Semantics."](https://aclanthology.org/2022.emnlp-main.528/) In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, pp. 7742–7756, Abu Dhabi, United Arab Emirates. Association for Computational Linguistics. 2022.
 
 
