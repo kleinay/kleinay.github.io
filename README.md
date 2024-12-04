@@ -6,16 +6,24 @@ Hi, welcome to my homepage.
 ## About 
 
 
-I am a Ph.D researcher in Computer Science in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at [Bar Ilan University](http://www1.biu.ac.il/indexE.php) under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). 
-Most of my research so far is focused on Semantic Representations. Other that that, my research interests are broad and include computational linguistics, semantics and meaning, cognitive psycholinguistics and applied deep learning for NLP.   
+I am a post-doctoral researcher in Queen Mary University of London and Bar Ilan University, working on Natual Language Processing. I work with Prof. Maria Liakata and Prof. Dana Atzil-Slonim on employing advanced NLP methods in order to gain scientific insights in the domain of psychotherapy research. Our goal is to decipher the mental processes and dynamics underlying mental health and effective psychotherapy.   
 
-I completed my B.Sc. (2015) in Psychology and Philosophy and my M.Sc. (2018) in Computer Science at Bar Ilan University.  
+Previously, I completed my B.Sc. (2015) in Psychology and Philosophy at [Bar Ilan University](http://www1.biu.ac.il/indexE.php), and my M.Sc. (2018) and Ph.D. (2024) in Computer Science, in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at Bar Ilan University under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). My Ph.D was focused on Semantic Representations (see [the QASem project](#the-qasem-project)).  
+
+ Other that that, my research interests are (very) broad, and include computational linguistics, semantics and meaning, cognitive psycholinguistics and applied deep learning for NLP. 
+ I'm also enthusiastic about cross-disciplanry collaborations of AI and Data-Science specialists with social sciences and humanities, aiming at revolutionzing the way we investigate, measure and confirm/disprove scientific research questions in the ``softer'' sciences.    
 
 ## The QASem project
 
-We have devised a natural way to break down the information conveyed by langauge, using question-answer pairs. Our semantic framework, termed *QASem* (QA-based Semantics), consists of several annotation 'layers' covering different types of textual information or *semantic relations*. Our tool takes in a sentences and outputs a set of QAs that correspond to the basic information units in the sentence. You can take a look at the [QASem demo](https://huggingface.co/spaces/kleinay/qasem-demo) or install it in your python environment through `pip install qasem`. See our [repo](https://github.com/kleinay/QASem) for further details. 
+In my Ph.D, we have devised a natural way to break down the information conveyed by langauge, using question-answer pairs. Our semantic framework, termed *QASem* (QA-based Semantics), consists of several annotation 'layers' covering different types of textual information or *semantic relations*. Our tool takes in a sentences and outputs a set of QAs that correspond to the basic information units in the sentence. You can take a look at the [QASem demo](https://huggingface.co/spaces/kleinay/qasem-demo) or install its latest version it in your python environment through `pip install qasem_parser`. See our [repo](https://github.com/kleinay/QASem) for further details (or Paul's [repo](https://github.com/plroit/qasem_parser) for the latest, more performant version). 
 
 ## Publications
+
+Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn Schuller, Maria Liakata, and Dana Atzil-Slonim. ["Clinical Insights from Social Media: Assessing Summaries of Large Language Models and Humans."](https://osf.io/preprints/osf/ehp97) OSF Preprints. November 4. doi:10.31219/osf.io/ehp97. 2024.  
+
+
+Triantafyllopoulos, Andreas, Yannik Terhorst, Iosif Tsangko, Florian B. Pokorny, Katrin D. Bartl-Pokorny, Lennart Seizer, Ayal Klein, Jenny Chim, Dana Atzil-Slonim, Maria Liakata, Markus Bühner, Johanna Löchner, and Björn Schuller. ["Large language models for mental health."](https://arxiv.org/abs/2411.11880) arXiv preprint arXiv:2411.11880. 2024.
+
 
 Roit, Paul, Aviv Slobodkin, Eran Hirsch, Arie Cattan, Ayal Klein, Valentina Pyatkin, and Ido Dagan. ["Explicating the Implicit: Argument Detection Beyond Sentence Boundaries."](https://aclanthology.org/2024.acl-long.863/) In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp. 16394–16409, Bangkok, Thailand. Association for Computational Linguistics.  2024.
 
