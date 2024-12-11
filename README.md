@@ -19,20 +19,17 @@ In my Ph.D, we have devised a natural way to break down the information conveyed
 
 ## Publications
 
-Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn Schuller, Maria Liakata, and Dana Atzil-Slonim. ["Clinical Insights from Social Media: Assessing Summaries of Large Language Models and Humans."](https://osf.io/preprints/osf/ehp97) OSF Preprints. November 4. doi:10.31219/osf.io/ehp97. 2024.  
+Zhang, Shiyue, David Wan, Arie Cattan, Ayal Klein, Ido Dagan, and Mohit Bansal. ["QAPyramid: Fine-grained Evaluation of Content Selection for Text Summarization."](https://arxiv.org/abs/2412.07096) arXiv preprint arXiv:2412.07096. 2024.
 
+Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn Schuller, Maria Liakata, and Dana Atzil-Slonim. ["Clinical Insights from Social Media: Assessing Summaries of Large Language Models and Humans."](https://osf.io/preprints/osf/ehp97) OSF Preprints. November 4. doi:10.31219/osf.io/ehp97. 2024.  
 
 Triantafyllopoulos, Andreas, Yannik Terhorst, Iosif Tsangko, Florian B. Pokorny, Katrin D. Bartl-Pokorny, Lennart Seizer, Ayal Klein, Jenny Chim, Dana Atzil-Slonim, Maria Liakata, Markus Bühner, Johanna Löchner, and Björn Schuller. ["Large language models for mental health."](https://arxiv.org/abs/2411.11880) arXiv preprint arXiv:2411.11880. 2024.
 
-
 Roit, Paul, Aviv Slobodkin, Eran Hirsch, Arie Cattan, Ayal Klein, Valentina Pyatkin, and Ido Dagan. ["Explicating the Implicit: Argument Detection Beyond Sentence Boundaries."](https://aclanthology.org/2024.acl-long.863/) In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp. 16394–16409, Bangkok, Thailand. Association for Computational Linguistics.  2024.
-
 
 Pesahov, Leon, Ayal Klein, and Ido Dagan. ["QA-Adj: Adding Adjectives to QA-based Semantics."](https://aclanthology.org/2023.dmr-1.8/) In Proceedings of the Fourth International Workshop on Designing Meaning Representations, pp. 74–88, Nancy, France. Association for Computational Linguistics. 2023.
 
-
 Klein, Ayal, Eran Hirsch, Ron Eliav, Valentina Pyatkin, Avi Caciularu, and Ido Dagan. ["QASem Parsing: Text-to-text Modeling of QA-based Semantics."](https://aclanthology.org/2022.emnlp-main.528/) In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, pp. 7742–7756, Abu Dhabi, United Arab Emirates. Association for Computational Linguistics. 2022.
-
 
 Klein, Ayal, Oren Pereg, Daniel Korat, Vasudev Lal, Moshe Wasserblat, and Ido Dagan. ["Opinion-based Relational Pivoting for Cross-domain Aspect Term Extraction."](https://aclanthology.org/2022.wassa-1.11/) In Proceedings of the 12th Workshop on Computational Approaches to Subjectivity, Sentiment & Social Media Analysis, pp. 104-112. 2022.
 
@@ -48,15 +45,13 @@ Roit, Paul, Ayal Klein, Daniela Stepanov, Jonathan Mamou, Julian Michael, Gabrie
 
 ## Teaching Experience
 
-This year (2023) I will be lecturing the “Artificial Neural Networks” course at the neuroscience department, Bar Ilan University.
+* Lecturer for “Artificial Neural Networks” Course (27-436), Neuroscience Department, Bar Ilan University (2023-2024). 
 
-Previously, I had a great time teaching in the following courses:
+* Teacher Assistant for “Object Oriented Programming” Course (89-111), Department of Computer Science, Bar Ilan University (2019-2020).
 
-* Teacher Assistant for “Object Oriented Programming” Course (89-111), Bar Ilan University (2019-2020).
+* Teacher Assistant for “Discrete Mathematics 1” Course (89-195), Department of Computer Science, Bar Ilan University (2019).
 
-* Teacher Assistant for “Discrete Mathematics 1” Course (89-195), Bar Ilan University (2019).
-
-* Teacher Assistant for “Text Understanding” Course (89-565), Bar Ilan University (2018).
+* Teacher Assistant for “Text Understanding” Course (89-565), Department of Computer Science, Bar Ilan University (2018).
 
 
 ### Contact
