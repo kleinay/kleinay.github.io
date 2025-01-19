@@ -10,8 +10,8 @@ I am a post-doctoral researcher in Queen Mary University of London and Bar Ilan 
 
 Previously, I completed my B.Sc. (2015) in Psychology and Philosophy at [Bar Ilan University](http://www1.biu.ac.il/indexE.php), and my M.Sc. (2018) and Ph.D. (2024) in Computer Science, in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at Bar Ilan University under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). My Ph.D was focused on Semantic Representations (see [the QASem project](#the-qasem-project)).  
 
- Other that that, my research interests are (very) broad, and include computational linguistics, semantics and meaning, cognitive psycholinguistics and applied deep learning for NLP. 
- I'm also enthusiastic about cross-disciplanry collaborations of AI and Data-Science specialists with social sciences and humanities, aiming at revolutionzing the way we investigate, measure and confirm/disprove scientific research questions in the ``softer'' sciences.    
+Beyond that, my research interests are (very) broad, and include computational linguistics, semantics and meaning, cognitive psycholinguistics, and understanding NLP deep learning models. 
+I'm also enthusiastic about cross-disciplanry collaborations of AI and Data-Science specialists with social sciences and humanities, aiming at revolutionzing the way we investigate, measure and confirm/disprove scientific research questions in the ``softer'' sciences.    
 
 ## The QASem project
 
