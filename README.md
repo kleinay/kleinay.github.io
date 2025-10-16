@@ -5,12 +5,16 @@ Hi, welcome to my homepage.
 
 ## About 
 
+I am a Lecturer (Principal Investigator) in the [Department of Computer Science, Ariel University](https://www.ariel.ac.il/wp/cs/en/), where I lead the [NLP for Human Sciences Lab](https://sites.google.com/view/ayalkleinlab/home).
+My research explores the intersection of Artificial Intelligence and the Human Sciences, focusing on how Large Language Models (LLMs) can advance our understanding of complex human phenomena while enhancing scientific discovery itself.
 
-I am a post-doctoral researcher in Queen Mary University of London and Bar Ilan University, working on Natual Language Processing. I work with Prof. Maria Liakata and Prof. Dana Atzil-Slonim on employing advanced NLP methods in order to gain scientific insights in the domain of psychotherapy research. Our goal is to decipher the mental processes and dynamics underlying mental health and effective psychotherapy.   
+Methodologically, I work on interpretable and causal NLP, with an emphasis on LLM interpretability, concept-based representations, and model-based reasoning that bridges data-driven AI and theory-driven science.
 
-Previously, I completed my B.Sc. (2015) in Psychology and Philosophy at [Bar Ilan University](http://www1.biu.ac.il/indexE.php), and my M.Sc. (2018) and Ph.D. (2024) in Computer Science, in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at Bar Ilan University under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). My Ph.D was focused on Semantic Representations (see [the QASem project](#the-qasem-project)).  
+Before joining Ariel University, I was a post-doctoral researcher at Queen Mary University of London and Bar-Ilan University, working with Prof. Maria Liakata and Prof. Dana Atzil-Slonim on applying advanced NLP to psychotherapy research—aiming to uncover the mental processes and dynamics underlying effective therapeutic change.
 
-Beyond that, my research interests are (very) broad, and include computational linguistics, semantics and meaning, cognitive psycholinguistics, and understanding NLP deep learning models. 
+I completed my B.Sc. (2015) in Psychology and Philosophy at [Bar Ilan University](http://www1.biu.ac.il/indexE.php), and my M.Sc. (2018) and Ph.D. (2024) in Computer Science, in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at Bar Ilan University under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). My doctoral research focused on semantic representations, particularly [the QASem project](#the-qasem-project)).  
+
+My broader academic interests span psychology, cognitive and social sciences, linguistics, philosophy, mathematics, and computational methods --- fields that together shape a vision of AI as a catalyst for integrative scientific understanding. 
 I'm also enthusiastic about cross-disciplanry collaborations of AI and Data-Science specialists with social sciences and humanities, aiming at revolutionzing the way we investigate, measure and confirm/disprove scientific research questions in the ``softer'' sciences.    
 
 ## The QASem project
