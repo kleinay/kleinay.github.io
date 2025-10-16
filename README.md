@@ -23,6 +23,8 @@ In my Ph.D, we have devised a natural way to break down the information conveyed
 
 ## Publications
 
+Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn W. Schuller, Maria Liakata, and Dana Atzil-Slonim. 2025. "Clinical Summaries of Social Media Timelines for Mental Health Monitoring: Human vs. Large Language Model Comparative Evaluation." JMIR Formative Research (forthcoming). doi:10.2196/71230
+
 Zhang, Shiyue, David Wan, Arie Cattan, Ayal Klein, Ido Dagan, and Mohit Bansal. 2025. ["QAPyramid: Fine-grained Evaluation of Content Selection for Text Summarization."](https://arxiv.org/abs/2412.07096).  In Proceedings of the Conference on Language Modeling (COLM 2025). Association for Computational Linguistics.
 
 Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn Schuller, Maria Liakata, and Dana Atzil-Slonim. ["Clinical Insights from Social Media: Assessing Summaries of Large Language Models and Humans."](https://osf.io/preprints/osf/ehp97) OSF Preprints. November 4. doi:10.31219/osf.io/ehp97. 2024.  
