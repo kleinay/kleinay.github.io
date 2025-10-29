@@ -23,9 +23,11 @@ In my Ph.D, we have devised a natural way to break down the information conveyed
 
 ## Publications
 
-Tseytlin, Maria, Paul Roit, Omri Abend, Ido Dagan, and Ayal Klein. 2025. “QA-Noun: Representing Nominal Semantics via Natural Language Question-Answer Pairs.” Proceedings of the International Joint Conference on Natural Language Processing and the Asian Conference on Natural Language Processing (IJCNLP/AACL 2025) (forthcoming).
+Tseytlin, Maria, Paul Roit, Omri Abend, Ido Dagan, and Ayal Klein. "QA-Noun: Representing Nominal Semantics via Natural Language Question-Answer Pairs." Proceedings of the International Joint Conference on Natural Language Processing and the Asian Conference on Natural Language Processing (IJCNLP/AACL 2025) (forthcoming). 2025.
 
-Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn W. Schuller, Maria Liakata, and Dana Atzil-Slonim. 2025. "Clinical Summaries of Social Media Timelines for Mental Health Monitoring: Human vs. Large Language Model Comparative Evaluation." JMIR Formative Research (forthcoming). doi:10.2196/71230
+Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn W. Schuller, Maria Liakata, and Dana Atzil-Slonim. "Clinical Summaries of Social Media Timelines for Mental Health Monitoring: Human vs. Large Language Model Comparative Evaluation." JMIR Formative Research (forthcoming). doi:10.2196/71230. 2025.
+
+Tseriotou, Talia, Jenny Chim, Ayal Klein, Aya Shamir, Guy Dvir, Iqra Ali, Cian Kennedy, Guneet Singh Kohli, Anthony Hills, Ayah Zirikly, Dana Atzil-Slonim, and Maria Liakata.  ["Overview of the CLPsych 2025 Shared Task: Capturing Mental Health Dynamics from Social Media Timelines."](https://aclanthology.org/2025.clpsych-1.16/) In Proceedings of the 10th Workshop on Computational Linguistics and Clinical Psychology (CLPsych 2025), pages 193–217, Albuquerque, New Mexico. Association for Computational Linguistics. 2025.
 
 Zhang, Shiyue, David Wan, Arie Cattan, Ayal Klein, Ido Dagan, and Mohit Bansal. ["QAPyramid: Fine-grained Evaluation of Content Selection for Text Summarization."](https://arxiv.org/abs/2412.07096).  In Proceedings of the Conference on Language Modeling (COLM 2025). Association for Computational Linguistics. 2025.
 
