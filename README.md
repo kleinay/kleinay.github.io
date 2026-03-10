@@ -23,7 +23,9 @@ In my Ph.D, we have devised a natural way to break down the information conveyed
 
 ## Publications
 
-Tseytlin, Maria, Paul Roit, Omri Abend, Ido Dagan, and Ayal Klein. "QA-Noun: Representing Nominal Semantics via Natural Language Question-Answer Pairs." Proceedings of the International Joint Conference on Natural Language Processing and the Asian Conference on Natural Language Processing (IJCNLP/AACL 2025) (forthcoming). 2025.
+Davidov, Jonathan, Aviv Slobodkin, Shmuel Tomi Klein, Reut Tsarfaty, Ido Dagan, and Ayal Klein. ["Effective QA-driven Annotation of Predicate-Argument Relations Across Languages"](https://arxiv.org/pdf/2602.22865). Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics. (forthcoming). 2026.
+
+Tseytlin, Maria, Paul Roit, Omri Abend, Ido Dagan, and Ayal Klein. ["QA-Noun: Representing Nominal Semantics via Natural Language Question-Answer Pairs.](https://aclanthology.org/2025.ijcnlp-long.147/) In Proceedings of the 14th International Joint Conference on Natural Language Processing and the 4th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics, pages 2727–2741, Mumbai, India. The Asian Federation of Natural Language Processing and The Association for Computational Linguistics. 2025.
 
 Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn W. Schuller, Maria Liakata, and Dana Atzil-Slonim. "Clinical Summaries of Social Media Timelines for Mental Health Monitoring: Human vs. Large Language Model Comparative Evaluation." JMIR Formative Research (forthcoming). doi:10.2196/71230. 2025.
 
@@ -52,6 +54,12 @@ Roit, Paul, Ayal Klein, Daniela Stepanov, Jonathan Mamou, Julian Michael, Gabrie
 
 
 ## Teaching Experience
+
+* Lecturer for “Object Oriented Programming” Course, Computer Science Department, Ariel University (2026). 
+
+* Lecturer for “Databases” Course, Computer Science Department, Ariel University (2025-present). 
+
+* Lecturer for “Advanced Models of Language Understanding” Course, Computer Science Department, Ariel University (2025-present). 
 
 * Lecturer for “Artificial Neural Networks” Course (27-436), Neuroscience Department, Bar Ilan University (2023-2024). 
 
