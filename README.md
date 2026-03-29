@@ -23,12 +23,11 @@ In my Ph.D, we have devised a natural way to break down the information conveyed
 
 ## Publications
 
-Davidov, Jonathan, Aviv Slobodkin, Shmuel Tomi Klein, Reut Tsarfaty, Ido Dagan, and Ayal Klein. ["Effective QA-driven Annotation of Predicate-Argument Relations Across Languages"](https://arxiv.org/pdf/2602.22865). Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics. (forthcoming). 2026.
-
-Tseytlin, Maria, Paul Roit, Omri Abend, Ido Dagan, and Ayal Klein. ["QA-Noun: Representing Nominal Semantics via Natural Language Question-Answer Pairs.](https://aclanthology.org/2025.ijcnlp-long.147/) In Proceedings of the 14th International Joint Conference on Natural Language Processing and the 4th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics, pages 2727–2741, Mumbai, India. The Asian Federation of Natural Language Processing and The Association for Computational Linguistics. 2025.
+Davidov, Jonathan, Aviv Slobodkin, Shmuel Tomi Klein, Reut Tsarfaty, Ido Dagan, and Ayal Klein. ["Effective QA-driven Annotation of Predicate-Argument Relations Across Languages"](https://aclanthology.org/2026.eacl-long.112.pdf). Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers), pages 2484–2502, Rabat, Morocco. Association for Computational Linguistics. 2026.
 
 Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn W. Schuller, Maria Liakata, and Dana Atzil-Slonim. ["Clinical Summaries of Social Media Timelines for Mental Health Monitoring: Human vs. Large Language Model Comparative Evaluation."](https://formative.jmir.org/2026/1/e71230) JMIR Formative Research 2026; 10:e71230. doi:10.2196/71230. 2026.
 
+Tseytlin, Maria, Paul Roit, Omri Abend, Ido Dagan, and Ayal Klein. ["QA-Noun: Representing Nominal Semantics via Natural Language Question-Answer Pairs.](https://aclanthology.org/2025.ijcnlp-long.147/) In Proceedings of the 14th International Joint Conference on Natural Language Processing and the 4th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics, pages 2727–2741, Mumbai, India. The Asian Federation of Natural Language Processing and The Association for Computational Linguistics. 2025.
 
 Tseriotou, Talia, Jenny Chim, Ayal Klein, Aya Shamir, Guy Dvir, Iqra Ali, Cian Kennedy, Guneet Singh Kohli, Anthony Hills, Ayah Zirikly, Dana Atzil-Slonim, and Maria Liakata.  ["Overview of the CLPsych 2025 Shared Task: Capturing Mental Health Dynamics from Social Media Timelines."](https://aclanthology.org/2025.clpsych-1.16/) In Proceedings of the 10th Workshop on Computational Linguistics and Clinical Psychology (CLPsych 2025), pages 193–217, Albuquerque, New Mexico. Association for Computational Linguistics. 2025.
 
