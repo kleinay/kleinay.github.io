@@ -23,6 +23,8 @@ In my Ph.D, we have devised a natural way to break down the information conveyed
 
 ## Publications
 
+Kialy, Uri Z., Avi Shtarkberg, and Ayal Klein. ["A Universal Vibe? Finding and Controlling Language-Agnostic Informal Register with SAEs"](https://arxiv.org/abs/2603.26236) [**Under review**]. arXiv preprint arXiv:2603.26236. 2026.
+
 Davidov, Jonathan, Aviv Slobodkin, Shmuel Tomi Klein, Reut Tsarfaty, Ido Dagan, and Ayal Klein. ["Effective QA-driven Annotation of Predicate-Argument Relations Across Languages"](https://aclanthology.org/2026.eacl-long.112.pdf). Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers), pages 2484–2502, Rabat, Morocco. Association for Computational Linguistics. 2026.
 
 Klein, Ayal, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn W. Schuller, Maria Liakata, and Dana Atzil-Slonim. ["Clinical Summaries of Social Media Timelines for Mental Health Monitoring: Human vs. Large Language Model Comparative Evaluation."](https://formative.jmir.org/2026/1/e71230) JMIR Formative Research 2026; 10:e71230. doi:10.2196/71230. 2026.
