@@ -78,4 +78,6 @@ Feel free to contact me.
 
 Email: ayal dot s dot klein at gmail dot com
 
+OR Institutional email: ayalk at ariel dot ac dot il
+
 I'm also at [LinkedIn](https://www.linkedin.com/in/ayalklein33298a61/).
