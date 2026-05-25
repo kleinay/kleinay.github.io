@@ -1,4 +1,4 @@
-[Home / Academic Profile](index.html) | [Industry Solutions & Consulting](#) | [NLP Lab](https://sites.google.com/view/ayalkleinlab/home)
+[Home / Academic Profile](index.html) | [Industry Solutions & Consulting](#) | [NLP for Human Sciences Lab](https://sites.google.com/view/ayalkleinlab/home)
 
 ---
 # Industry Solutions & Custom LLM Architecture
