@@ -1,3 +1,6 @@
+[Home / Academic Profile](index.html) | [Industry Solutions & Consulting](#) | [NLP Lab](https://sites.google.com/view/ayalkleinlab/home)
+
+---
 # Industry Solutions & Custom LLM Architecture
 
 Stop renting generic intelligence. I help research labs, startups, and private organizations move beyond basic, expensive API prompting to build high-accuracy, custom-owned NLP assets tailored to their exact domain and requirements.
@@ -34,6 +37,14 @@ For academic labs and data-driven startups, the validity of the data is everythi
 
 ---
 
+## About the Architect
+
+I am a faculty member and the Director of the [NLP for Human Sciences Lab](https://sites.google.com/view/ayalkleinlab/home) at Ariel University. My academic research focuses on the intersection of language, artificial intelligence, clinical psychology, and human behavior. 
+
+[Read my full academic profile and publications here.](index.html)
+
+---
+
 ## Let's Discuss Your Data
 
 I accept a limited number of consulting projects per semester to ensure the highest level of rigorous, hands-on architectural design. 
@@ -42,3 +53,5 @@ To schedule a preliminary discovery call, please reach out with a brief overview
 
 * **Email:** ayal dot s dot klein at gmail dot com
 * **LinkedIn:** [Message me on LinkedIn](https://www.linkedin.com/in/ayalklein33298a61/)
+
+
