@@ -1,4 +1,4 @@
-[Home / Academic Profile](#about) | [Industry Solutions & Consulting](NLPServices.md) | [Publications](#publications) | [Contact](#contact)
+[Home / Academic Profile](#about) | [Industry Solutions & Consulting](NLPServices.md) |  [NLP for Human Sciences Lab](https://sites.google.com/view/ayalkleinlab/home) | [Publications](#publications) | [Contact](#contact)
 
 ---
 
