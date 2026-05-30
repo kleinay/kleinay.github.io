@@ -5,7 +5,7 @@
 # Ayal Klein, Ph.D.
 
 Hi, welcome to my homepage.
-![My Portrait Picture](/docs/assets/myportrait3.jpg)
+<img src="/docs/assets/myportrait3.jpg" alt="My Portrait Picture" width="50%"/>
 
 ## About 
 
