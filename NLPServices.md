@@ -3,10 +3,9 @@
 ---
 # Applied NLP Architecture --- Custom LLM Solutions & Consulting 
 
+Organizations and research labs sit on mountains of unstructured text --- survey responses, interviews, transcripts, clinical notes, customer support logs, employee feedback, or dense institutional documents. But turning nuanced human language into structured, actionable data is often a slow, manual, and expensive bottleneck.
 
-Organizations and research labs sit on mountains of unstructured text --- survey responses, transcripts, customer support logs, or extensive corporate documents. But turning nuanced human language into structured, actionable data is often a slow, manual, and expensive bottleneck.
-
-I help teams solve this challenge. By bridging cutting-edge academic methodologies with practical data engineering, I transform complex text into high-precision insights. Whether you need to automate hundreds of hours of manual coding or build a secure, custom-trained model for your internal servers, I design NLP pipelines tailored exactly to your domain's DNA.
+I help teams solve this challenge. By bridging cutting-edge academic NLP methodologies with practical LLM engineering, I transform complex text into reliable, structured insights. Whether you need to automate qualitative coding, analyze thousands of open-ended responses, extract behavioral or clinical markers, or build a secure text-analysis pipeline for sensitive data, I design NLP workflows tailored to your domain’s specific language, concepts, and constraints.
 
 
 ---
@@ -15,8 +14,9 @@ I help teams solve this challenge. By bridging cutting-edge academic methodologi
 
 Most data science tools are built for numbers; I build tools for human language. I help teams across various sectors automate their text analysis bottlenecks:
 
-* **Qualitative & Social Science Research:** Automating the analysis of massive text corpora --- including social media posts, literature, or political and legal documents --- by instantly extracting thematic patterns, framing, and implicit sentiment without manual reading.
-* **Clinical & Behavioral Tracking:** Extracting structured psychological markers, clinical timelines, or behavioral signals from open-ended surveys, transcripts and notes.
+* **Qualitative Research & Open-Ended Survey Coding:** Automating or accelerating the analysis of interviews, open-ended survey responses, focus groups, social media posts, and qualitative corpora. This includes extracting themes, categories, arguments, needs, emotions, frames, or other domain-specific codes — while preserving a clear validation process against human judgment.
+* **Clinical, Behavioral & Health Text Analytics:** Extracting structured psychological, behavioral, or clinical indicators from sensitive text such as patient narratives, intake forms, therapy-related transcripts, clinical notes, or health questionnaires. These projects emphasize privacy, expert validation, and careful interpretation rather than generic automation.
+* **UX, Product & Market Research:** Turning user interviews, usability notes, feature requests, product feedback, and open-ended market research responses into structured insights. Typical outputs include taxonomies of user needs, recurring pain points, product themes, decision-relevant clusters, and representative evidence from the raw text.
 * **Operations & Customer Experience:** Processing high volumes of public inquiries, user feedback, or customer support logs to automatically classify intent, cluster recurring complaints, and route issues.
 * **Institutional Knowledge & Procurement:** Distilling actionable insights, efficiency metrics, and structured metadata from messy meeting minutes, vendor reports, and dense corporate documents.
 
