@@ -228,22 +228,84 @@
 
     /* ── Research (QASem) ── */
     #research { background: var(--bg); }
+    .research-vision {
+      max-width: 780px;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2.4rem;
+    }
+    .research-dirs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .rdir-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.5rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .rdir-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .rdir-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: .9rem;
+    }
+    .rdir-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--accent-light); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .rdir-card h3 { font-size: .97rem; font-weight: 600; color: var(--navy); margin-bottom: .4rem; }
+    .rdir-card p { font-size: .88rem; color: var(--muted); line-height: 1.7; }
+    .lab-cta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .lab-cta p { color: #b8cde8; font-size: .93rem; line-height: 1.6; flex: 1; min-width: 200px; margin: 0; }
+    .lab-cta p strong { color: #fff; }
+    .lab-cta a.lab-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: .5rem 1.2rem;
+      border-radius: 7px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .lab-cta a.lab-btn:hover { background: #2270c2; }
+    .past-work-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
     .research-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 2rem 1.8rem;
-      box-shadow: var(--shadow);
-      max-width: 780px;
+      padding: 1.5rem 1.6rem;
+      max-width: 700px;
     }
     .research-card h3 {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: .97rem;
+      font-weight: 600;
       color: var(--navy);
-      margin-bottom: .7rem;
+      margin-bottom: .5rem;
     }
-    .research-card p { font-size: .95rem; color: var(--muted); line-height: 1.78; margin-bottom: .7rem; }
+    .research-card p { font-size: .9rem; color: var(--muted); line-height: 1.75; margin-bottom: .6rem; }
     .research-card p:last-child { margin-bottom: 0; }
     .research-card a { color: var(--accent); text-decoration: none; font-weight: 500; }
     .research-card a:hover { text-decoration: underline; }
@@ -382,6 +444,7 @@
     <li><a href="#publications">Publications</a></li>
     <li><a href="#teaching">Teaching</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener">Lab</a></li>
     <li class="nav-cta"><a href="NLPServices.html">Consulting</a></li>
   </ul>
 </nav>
@@ -441,21 +504,58 @@
 <!-- Research -->
 <section id="research">
   <div class="container">
-    <p class="section-label">Featured Project</p>
-    <h2 class="section-title">The QASem Project</h2>
+    <p class="section-label">Research</p>
+    <h2 class="section-title">Vision &amp; Research Lines</h2>
     <div class="divider"></div>
+
+    <p class="research-vision">
+      The long-range goal of my work is to transform how empirical science is practiced in the human sciences — using the new ML/LLM toolbox not merely as a productivity aid, but as a fundamentally new instrument for measuring, modeling, and understanding human behavior, language, and cognition. I believe we are at an inflection point where AI can act as a catalyst for integrative, theory-grounded scientific discovery, enabling researchers to ask questions at a scale and resolution that were simply not feasible before.
+    </p>
+
+    <div class="research-dirs">
+
+      <div class="rdir-card">
+        <div class="rdir-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>NLP for Clinical Psychology &amp; Mental Health</h3>
+        <p>Applying LLMs to therapy transcripts, social media timelines, and clinical texts to quantify behavior, mental states, and therapeutic processes at scale — with rigorous expert validation.</p>
+      </div>
+
+      <div class="rdir-card">
+        <div class="rdir-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>
+        </div>
+        <h3>Language Model Interpretability</h3>
+        <p>Investigating how LLMs encode conceptual meaning, cultural nuances, and cognitive structures — through mechanistic interpretability, latent space analysis, and concept-based representations.</p>
+      </div>
+
+      <div class="rdir-card">
+        <div class="rdir-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <h3>AI as a Scientific Instrument</h3>
+        <p>Developing NLP workflows and evaluation frameworks that let researchers in social, behavioral, and health sciences rigorously apply AI to their empirical questions — bridging data-driven AI with theory-driven science.</p>
+      </div>
+
+    </div>
+
+    <div class="lab-cta">
+      <p><strong>The lab website is the primary, up-to-date window into our ongoing projects, team, and collaborations.</strong> This page offers a snapshot; visit there for the full picture.</p>
+      <a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener" class="lab-btn">Visit the Lab →</a>
+    </div>
+
+    <p class="past-work-label">PhD Work</p>
     <div class="research-card">
-      <h3>QA-based Semantics</h3>
+      <h3>The QASem Project</h3>
       <p>
-        In my Ph.D., we devised a natural way to break down the information conveyed by language using question-answer pairs. Our semantic framework, termed <em>QASem</em> (QA-based Semantics), consists of several annotation layers covering different types of textual information and semantic relations. The tool takes a sentence and outputs a set of QA pairs that correspond to the basic information units in the sentence.
+        In my Ph.D., we devised a natural way to break down the information conveyed by language using question-answer pairs. The <em>QASem</em> framework covers multiple layers of textual meaning; the tool takes a sentence and outputs QA pairs corresponding to its basic semantic units.
       </p>
       <p>
-        <a href="https://huggingface.co/spaces/kleinay/qasem-demo" target="_blank" rel="noopener">Try the QASem demo →</a> &nbsp;·&nbsp;
-        <a href="https://github.com/kleinay/QASem" target="_blank" rel="noopener">GitHub repo</a> &nbsp;·&nbsp;
-        <a href="https://github.com/plroit/qasem_parser" target="_blank" rel="noopener">Latest parser (Paul's repo)</a>
-      </p>
-      <p>
-        Install the latest version via: <span class="pill">pip install qasem_parser</span>
+        <a href="https://huggingface.co/spaces/kleinay/qasem-demo" target="_blank" rel="noopener">Demo</a> &nbsp;·&nbsp;
+        <a href="https://github.com/kleinay/QASem" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="https://github.com/plroit/qasem_parser" target="_blank" rel="noopener">Latest parser</a> &nbsp;·&nbsp;
+        <span class="pill">pip install qasem_parser</span>
       </p>
     </div>
   </div>
