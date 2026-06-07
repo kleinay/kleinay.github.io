@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applied NLP Architecture — Ayal Klein</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0f2240;
+      --navy-mid:#16325c;
+      --accent:  #2d7dd2;
+      --accent-light: #4e9de8;
+      --teal:    #1a9c8a;
+      --bg:      #f5f7fb;
+      --white:   #ffffff;
+      --text:    #1a2230;
+      --muted:   #576071;
+      --border:  #dde3ef;
+      --radius:  10px;
+      --shadow:  0 4px 24px rgba(15,34,64,.09);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    nav .logo {
+      font-family: 'Sora', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: #c5d8f5;
+      letter-spacing: .02em;
+      text-decoration: none;
+    }
+    nav .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    nav .nav-links a {
+      color: #a9bdd8;
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    nav .nav-links a:hover { color: #fff; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #1d4f8a 100%);
+      color: #fff;
+      padding: 7rem 2rem 5.5rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 1.1rem;
+      border: 1px solid rgba(78,157,232,.35);
+      padding: .28rem .9rem;
+      border-radius: 20px;
+    }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.4rem;
+      letter-spacing: -.01em;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero-sub {
+      max-width: 720px;
+      margin: 0 auto 2.4rem;
+      font-size: 1.08rem;
+      color: #b8cde8;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.8rem;
+      border-radius: var(--radius);
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s, background .2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(45,125,210,.45);
+    }
+    .btn-primary:hover { background: #2270c2; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(45,125,210,.55); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,.35);
+      color: #d5e5f8;
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: #fff; color: #fff; transform: translateY(-2px); }
+
+    /* ── Sections ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .55rem;
+    }
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Use Cases Grid ── */
+    #use-cases { background: var(--white); }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.6rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .card-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--accent-light); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .5rem;
+      line-height: 1.35;
+    }
+    .card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── Tracks ── */
+    #tracks { background: var(--bg); }
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 700px) { .tracks-grid { grid-template-columns: 1fr; } }
+    .track-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow);
+    }
+    .track-card.featured { border-top: 4px solid var(--accent); }
+    .track-card.alt { border-top: 4px solid var(--teal); }
+    .track-badge {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: .22rem .7rem;
+      border-radius: 20px;
+      margin-bottom: .9rem;
+    }
+    .badge-blue { background: #dbeafe; color: #1d4ed8; }
+    .badge-teal { background: #d1faf5; color: #0d7a6b; }
+    .track-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .5rem;
+    }
+    .track-for {
+      font-size: .87rem;
+      color: var(--muted);
+      background: var(--bg);
+      border-radius: 7px;
+      padding: .6rem .9rem;
+      margin: .9rem 0 1rem;
+      border-left: 3px solid var(--border);
+    }
+    .track-for strong { color: var(--text); font-weight: 600; }
+    .track-card p { font-size: .93rem; color: var(--muted); line-height: 1.72; margin-bottom: .7rem; }
+    .track-card ul { padding-left: 1.1rem; margin-top: .4rem; }
+    .track-card ul li { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: .3rem; }
+    .track-card ul li strong { color: var(--text); font-weight: 600; }
+
+    /* ── Validation ── */
+    #validation { background: var(--white); }
+    .pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .pillar {
+      padding: 1.8rem 1.6rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .pillar-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .pillar h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .45rem; }
+    .pillar p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── How it works ── */
+    #process { background: var(--bg); }
+    .steps { display: flex; flex-direction: column; gap: 1.4rem; max-width: 700px; }
+    .step { display: flex; gap: 1.4rem; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .3rem; }
+    .step-body p { font-size: .93rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── About ── */
+    #about {
+      background: var(--navy);
+      color: #fff;
+    }
+    #about .section-title { color: #fff; }
+    #about .section-intro { color: #93b4d4; max-width: 700px; }
+    #about a { color: var(--accent-light); }
+    #about a:hover { color: #fff; }
+
+    /* ── Contact ── */
+    #contact { background: var(--bg); }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      max-width: 580px;
+    }
+    .contact-card p { font-size: .97rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.6rem; }
+    .contact-links { display: flex; flex-direction: column; gap: .7rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .95rem; color: var(--text);
+    }
+    .contact-row svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .contact-row a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .contact-row a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: #506a8a;
+      text-align: center;
+      padding: 1.6rem 2rem;
+      font-size: .82rem;
+    }
+    footer a { color: #7e9ec0; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ── Divider ── */
+    .divider { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 1.4rem; }
+
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 1.2rem; }
+      .hero { padding: 4.5rem 1.2rem 3.5rem; }
+      nav { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="logo">Ayal Klein</a>
+  <ul class="nav-links">
+    <li><a href="#use-cases">Use Cases</a></li>
+    <li><a href="#tracks">Approach</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="index.html">Academic Profile</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">Custom LLM Solutions &amp; Consulting</div>
+  <h1>Applied NLP Architecture<br /><span>for Human Language Data</span></h1>
+  <p class="hero-sub">
+    Organizations sit on mountains of unstructured text — interviews, clinical notes, survey responses, customer logs. I bridge cutting-edge academic NLP with practical LLM engineering to transform complex language into reliable, structured insights.
+  </p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn btn-primary">Schedule a Discovery Call</a>
+    <a href="#use-cases" class="btn btn-outline">See Use Cases</a>
+  </div>
+</div>
+
+<!-- Use Cases -->
+<section id="use-cases">
+  <div class="container">
+    <p class="section-label">What We Can Build</p>
+    <h2 class="section-title">Common Use Cases</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Most data science tools are built for numbers; I build tools for human language. I help teams across various sectors automate their text-analysis bottlenecks.</p>
+
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Qualitative Research &amp; Survey Coding</h3>
+        <p>Automating or accelerating analysis of interviews, open-ended survey responses, focus groups, and qualitative corpora — extracting themes, arguments, needs, emotions, or domain-specific codes while preserving validation against human judgment.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Clinical, Behavioral &amp; Health Text Analytics</h3>
+        <p>Extracting structured psychological or clinical indicators from patient narratives, intake forms, therapy transcripts, or health questionnaires — with strict emphasis on privacy, expert validation, and careful interpretation.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>
+        </div>
+        <h3>UX, Product &amp; Market Research</h3>
+        <p>Turning user interviews, usability notes, feature requests, and market research responses into structured insights: taxonomies of user needs, pain-point clusters, decision-relevant themes, and representative evidence from the raw text.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Operations &amp; Customer Experience</h3>
+        <p>Processing high volumes of public inquiries, user feedback, or customer support logs to automatically classify intent, cluster recurring complaints, and route issues — at scale.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Institutional Knowledge &amp; Procurement</h3>
+        <p>Distilling actionable insights, efficiency metrics, and structured metadata from messy meeting minutes, vendor reports, and dense corporate documents.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Tracks -->
+<section id="tracks">
+  <div class="container">
+    <p class="section-label">How We Build It</p>
+    <h2 class="section-title">Two Project Tracks</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Whether you know your architecture or simply know you have a textual data problem, I structure projects into two tracks based on data scale, privacy requirements, and task complexity.</p>
+
+    <div class="tracks-grid">
+      <div class="track-card featured">
+        <span class="track-badge badge-blue">Track 1</span>
+        <h3>Rapid Data Extraction &amp; Automation</h3>
+        <div class="track-for"><strong>Best for:</strong> Teams that need to quickly transform unstructured text into structured databases without the overhead of training a new model from scratch.</div>
+        <p><strong>The Methodology:</strong> Advanced Prompt Engineering and In-Context Learning (ICL). We use powerful existing models and design sophisticated instructions, few-shot examples, and logical constraints to reliably pull exactly what you need.</p>
+      </div>
+
+      <div class="track-card alt">
+        <span class="track-badge badge-teal">Track 2</span>
+        <h3>Custom Model Engineering &amp; Private Deployment</h3>
+        <div class="track-for"><strong>Best for:</strong> Organizations dealing with highly sensitive data (medical, corporate IP), extreme domain-specific jargon, complex coding schemes, or massive text volumes where commercial API costs are unsustainable.</div>
+        <p><strong>The Methodology:</strong> Efficient Fine-Tuning (PEFT/LoRA). We train a compact, open-weight model (Llama, Qwen, or Mistral) on your private datasets so it masters your specific textual domain.</p>
+        <ul>
+          <li><strong>Data Privacy &amp; IP Ownership:</strong> Custom model weights you own completely — sensitive data never leaves your servers.</li>
+          <li><strong>Cost Reduction &amp; Tone Adaptation:</strong> Slashing cloud API costs while embedding your organizational style or clinical coding scheme directly into the model's architecture.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Validation -->
+<section id="validation">
+  <div class="container">
+    <p class="section-label">The Foundation</p>
+    <h2 class="section-title">Methodological Validation</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Regardless of track, the validity of the data is everything. Every NLP pipeline is built and validated to a rigorous academic standard so that stakeholders, clients, and peer-reviewers can fully trust the results.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3>Gold Standard Comparison</h3>
+        <p>Systematically testing and tuning the model against your gold-standard data (e.g. human-labeled annotations) to ensure maximum accuracy on your specific task.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3>Statistical Reliability</h3>
+        <p>Measuring performance using accepted statistical agreement metrics to prove the automated pipeline is as consistent and reliable as human experts.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h3>Augmented Evaluation</h3>
+        <p>Optionally supplementing human validation with "LLM-as-a-Judge" workflows, using secondary models to score text or monitor compliance against your specific rubrics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">From First Call to Delivery</h2>
+    <div class="divider"></div>
+    <p class="section-intro">You do not need to have the architecture mapped out before we speak. Start with your data problem.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Data Discovery</h3>
+          <p>We start with a brief scoping call and a sample of your raw data. I provide a preliminary assessment of what can be extracted and an estimation of the expected baseline accuracy range.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Fixed-Scope Execution</h3>
+          <p>I operate on a project-based, fixed-price model. You know exactly what the pipeline will cost and what deliverables you will receive before work begins.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Delivery &amp; Handoff</h3>
+          <p>You receive the fully annotated datasets, the trained model weights (if applicable), and the methodological documentation required for your internal stakeholders or academic publications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <p class="section-label" style="color: var(--accent-light);">About the Architect</p>
+    <h2 class="section-title">Ayal Klein, Ph.D.</h2>
+    <div class="divider" style="background: var(--accent-light);"></div>
+    <p class="section-intro">
+      I am a faculty member and the Director of the <a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener">NLP for Human Sciences Lab</a> at Ariel University. My academic research focuses on the intersection of language, artificial intelligence, clinical psychology, and human behavior.
+    </p>
+    <a href="index.html" class="btn btn-outline" style="border-color: rgba(255,255,255,.3); color: #c5d8f5;">Read My Academic Profile &amp; Publications →</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Let's Discuss Your Data</p>
+    <h2 class="section-title">Start a Discovery Call</h2>
+    <div class="divider"></div>
+
+    <div class="contact-card">
+      <p>I accept a limited number of consulting projects per semester to ensure the highest level of rigorous, hands-on architectural design. Reach out with a brief overview of your dataset and objectives to schedule a preliminary call.</p>
+      <div class="contact-links">
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span><a href="https://www.linkedin.com/in/ayalklein33298a61/" target="_blank" rel="noopener">Message me on LinkedIn</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Ayal Klein &nbsp;·&nbsp; <a href="index.html">Academic Profile</a> &nbsp;·&nbsp; <a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener">NLP for Human Sciences Lab</a></p>
+</footer>
+
+</body>
+</html>
