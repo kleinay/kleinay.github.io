@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayal Klein, Ph.D. — NLP Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0f2240;
+      --navy-mid:    #16325c;
+      --navy-light:  #1d4f8a;
+      --accent:      #2d7dd2;
+      --accent-light:#4e9de8;
+      --teal:        #1a9c8a;
+      --bg:          #f5f7fb;
+      --white:       #ffffff;
+      --text:        #1a2230;
+      --muted:       #576071;
+      --border:      #dde3ef;
+      --radius:      10px;
+      --shadow:      0 4px 24px rgba(15,34,64,.09);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: .01em;
+    }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: #a9bdd8;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      transition: color .2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links .nav-cta a {
+      background: var(--accent);
+      color: #fff;
+      padding: .3rem .85rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .nav-links .nav-cta a:hover { background: #2270c2; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+      padding: 5rem 2rem 4rem;
+    }
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .hero-text { color: #fff; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      border: 1px solid rgba(78,157,232,.35);
+      padding: .22rem .8rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .hero-text h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: .6rem;
+      letter-spacing: -.01em;
+    }
+    .hero-title {
+      font-size: 1rem;
+      color: #b8cde8;
+      font-weight: 400;
+      margin-bottom: .3rem;
+    }
+    .hero-affil {
+      font-size: .92rem;
+      color: #7da3c8;
+      margin-bottom: 1.8rem;
+    }
+    .hero-affil a { color: var(--accent-light); text-decoration: none; }
+    .hero-affil a:hover { text-decoration: underline; }
+    .hero-links { display: flex; gap: .9rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: .6rem 1.4rem;
+      border-radius: var(--radius);
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s, background .2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(45,125,210,.4);
+    }
+    .btn-primary:hover { background: #2270c2; transform: translateY(-2px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,.3);
+      color: #c5d8f5;
+    }
+    .btn-outline:hover { border-color: #fff; color: #fff; transform: translateY(-2px); }
+
+    .hero-portrait {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 4px solid rgba(255,255,255,.18);
+      box-shadow: 0 8px 32px rgba(0,0,0,.35);
+      flex-shrink: 0;
+    }
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-portrait { width: 140px; height: 140px; margin: 0 auto; order: -1; }
+      .hero-links { justify-content: center; }
+    }
+
+    /* ── Section base ── */
+    section { padding: 4.5rem 2rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .45rem;
+    }
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .9rem;
+      line-height: 1.25;
+    }
+    .divider { width: 40px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 1.6rem; }
+
+    /* ── About ── */
+    #about { background: var(--white); }
+    .about-body { max-width: 780px; }
+    .about-body p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-body a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .about-body a:hover { text-decoration: underline; }
+    .about-body strong { color: var(--text); font-weight: 600; }
+
+    /* ── Consulting callout ── */
+    .callout {
+      margin-top: 2rem;
+      background: #eef4fd;
+      border: 1px solid #c5d8f5;
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .callout p { font-size: .95rem; color: var(--text); margin: 0; flex: 1; min-width: 200px; }
+    .callout p a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .callout p a:hover { text-decoration: underline; }
+    .callout-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: .45rem 1.1rem;
+      border-radius: 7px;
+      font-size: .85rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .callout-btn:hover { background: #2270c2; }
+
+    /* ── Research (QASem) ── */
+    #research { background: var(--bg); }
+    .research-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow);
+      max-width: 780px;
+    }
+    .research-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .7rem;
+    }
+    .research-card p { font-size: .95rem; color: var(--muted); line-height: 1.78; margin-bottom: .7rem; }
+    .research-card p:last-child { margin-bottom: 0; }
+    .research-card a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .research-card a:hover { text-decoration: underline; }
+    .pill {
+      display: inline-block;
+      font-family: 'Inter', monospace;
+      font-size: .8rem;
+      background: #eef4fd;
+      color: var(--navy-mid);
+      border: 1px solid #c5d8f5;
+      border-radius: 6px;
+      padding: .18rem .6rem;
+      margin-top: .3rem;
+    }
+
+    /* ── Publications ── */
+    #publications { background: var(--white); }
+    .pub-list { display: flex; flex-direction: column; gap: 1.1rem; max-width: 860px; }
+    .pub-item {
+      padding: 1.1rem 1.3rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: box-shadow .2s;
+    }
+    .pub-item:hover { box-shadow: var(--shadow); }
+    .pub-authors {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: .3rem;
+      line-height: 1.5;
+    }
+    .pub-authors strong { color: var(--text); font-weight: 600; }
+    .pub-title {
+      font-size: .97rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .25rem;
+      line-height: 1.4;
+    }
+    .pub-title a { color: var(--navy); text-decoration: none; }
+    .pub-title a:hover { color: var(--accent); }
+    .pub-venue {
+      font-size: .82rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .pub-badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .15rem .55rem;
+      border-radius: 4px;
+      margin-left: .4rem;
+      vertical-align: middle;
+    }
+    .badge-review { background: #fef3c7; color: #92400e; }
+
+    /* ── Teaching ── */
+    #teaching { background: var(--bg); }
+    .teach-list { display: flex; flex-direction: column; gap: .7rem; max-width: 780px; }
+    .teach-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: .9rem 1.2rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .teach-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: .55rem;
+    }
+    .teach-item p { font-size: .92rem; color: var(--muted); line-height: 1.6; }
+    .teach-item strong { color: var(--text); font-weight: 600; }
+
+    /* ── Contact ── */
+    #contact { background: var(--navy); color: #fff; }
+    #contact .section-label { color: var(--accent-light); }
+    #contact .section-title { color: #fff; }
+    #contact .divider { background: var(--accent-light); }
+    .contact-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 8px;
+      padding: .8rem 1.2rem;
+      font-size: .93rem;
+    }
+    .contact-chip svg { width: 18px; height: 18px; stroke: var(--accent-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .contact-chip a { color: #c5d8f5; text-decoration: none; font-weight: 500; }
+    .contact-chip a:hover { color: #fff; text-decoration: underline; }
+    .contact-note { margin-top: 2rem; font-size: .92rem; color: #7da3c8; max-width: 520px; line-height: 1.7; }
+    .contact-note a { color: var(--accent-light); text-decoration: none; }
+    .contact-note a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      background: #08182e;
+      color: #506a8a;
+      text-align: center;
+      padding: 1.4rem 2rem;
+      font-size: .82rem;
+    }
+    footer a { color: #7e9ec0; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 600px) {
+      section { padding: 3rem 1.2rem; }
+      nav { padding: 0 1rem; gap: .5rem; }
+      .nav-links { gap: .9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-logo">Ayal Klein</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li class="nav-cta"><a href="NLPServices.html">Consulting</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Academic Profile</span>
+      <h1>Ayal Klein, Ph.D.</h1>
+      <p class="hero-title">Lecturer &amp; Principal Investigator</p>
+      <p class="hero-affil">
+        Department of Computer Science, <a href="https://www.ariel.ac.il/wp/cs/en/" target="_blank" rel="noopener">Ariel University</a><br />
+        Director, <a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener">NLP for Human Sciences Lab</a>
+      </p>
+      <div class="hero-links">
+        <a href="#publications" class="btn btn-primary">Publications</a>
+        <a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener" class="btn btn-outline">Lab Website</a>
+        <a href="NLPServices.html" class="btn btn-outline">Consulting Services</a>
+      </div>
+    </div>
+    <img src="/docs/assets/myportrait3.jpg" alt="Portrait of Ayal Klein" class="hero-portrait" />
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Research &amp; Background</h2>
+    <div class="divider"></div>
+    <div class="about-body">
+      <p>
+        I am a Lecturer (Principal Investigator) in the <a href="https://www.ariel.ac.il/wp/cs/en/" target="_blank" rel="noopener">Department of Computer Science, Ariel University</a>, where I lead the <a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener">NLP for Human Sciences Lab</a>. My research explores the intersection of Artificial Intelligence and the Human Sciences, focusing on how Large Language Models (LLMs) can advance our understanding of complex human phenomena while enhancing scientific discovery itself.
+      </p>
+      <p>
+        Methodologically, I work on interpretable and causal NLP, with an emphasis on LLM interpretability, concept-based representations, and model-based reasoning that bridges data-driven AI and theory-driven science.
+      </p>
+      <p>
+        Before joining Ariel University, I was a post-doctoral researcher at Queen Mary University of London and Bar-Ilan University, working with Prof. Maria Liakata and Prof. Dana Atzil-Slonim on applying advanced NLP to psychotherapy research — aiming to uncover the mental processes and dynamics underlying effective therapeutic change.
+      </p>
+      <p>
+        I completed my B.Sc. (2015) in Psychology and Philosophy at <a href="http://www1.biu.ac.il/indexE.php" target="_blank" rel="noopener">Bar Ilan University</a>, and my M.Sc. (2018) and Ph.D. (2024) in Computer Science in the <a href="https://biu-nlp.github.io/" target="_blank" rel="noopener">Natural Language Processing Lab</a> at Bar Ilan University under the supervision of <a href="http://www.cs.biu.ac.il/~dagan/" target="_blank" rel="noopener">Prof. Ido Dagan</a>. My doctoral research focused on semantic representations, particularly the <a href="#research">QASem project</a>.
+      </p>
+      <p>
+        My broader academic interests span psychology, cognitive and social sciences, linguistics, philosophy, mathematics, and computational methods — fields that together shape a vision of AI as a catalyst for integrative scientific understanding. I am enthusiastic about cross-disciplinary collaborations of AI and Data-Science specialists with social sciences and humanities, aiming at revolutionizing the way we investigate, measure, and confirm or disprove scientific research questions in the "softer" sciences.
+      </p>
+
+      <div class="callout">
+        <p><strong>Industry Solutions &amp; Consulting:</strong> Alongside my academic work, I design and deliver custom NLP architecture and custom-owned LLM solutions for research labs, startups, and private organizations.</p>
+        <a href="NLPServices.html" class="callout-btn">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research -->
+<section id="research">
+  <div class="container">
+    <p class="section-label">Featured Project</p>
+    <h2 class="section-title">The QASem Project</h2>
+    <div class="divider"></div>
+    <div class="research-card">
+      <h3>QA-based Semantics</h3>
+      <p>
+        In my Ph.D., we devised a natural way to break down the information conveyed by language using question-answer pairs. Our semantic framework, termed <em>QASem</em> (QA-based Semantics), consists of several annotation layers covering different types of textual information and semantic relations. The tool takes a sentence and outputs a set of QA pairs that correspond to the basic information units in the sentence.
+      </p>
+      <p>
+        <a href="https://huggingface.co/spaces/kleinay/qasem-demo" target="_blank" rel="noopener">Try the QASem demo →</a> &nbsp;·&nbsp;
+        <a href="https://github.com/kleinay/QASem" target="_blank" rel="noopener">GitHub repo</a> &nbsp;·&nbsp;
+        <a href="https://github.com/plroit/qasem_parser" target="_blank" rel="noopener">Latest parser (Paul's repo)</a>
+      </p>
+      <p>
+        Install the latest version via: <span class="pill">pip install qasem_parser</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Publications -->
+<section id="publications">
+  <div class="container">
+    <p class="section-label">Publications</p>
+    <h2 class="section-title">Selected Works</h2>
+    <div class="divider"></div>
+    <div class="pub-list">
+
+      <div class="pub-item">
+        <p class="pub-authors">Kialy, Uri Z., Avi Shtarkberg, and <strong>Ayal Klein</strong>.</p>
+        <p class="pub-title">
+          <a href="https://arxiv.org/abs/2603.26236" target="_blank" rel="noopener">"A Universal Vibe? Finding and Controlling Language-Agnostic Informal Register with SAEs"</a>
+          <span class="pub-badge badge-review">Under Review</span>
+        </p>
+        <p class="pub-venue">arXiv preprint arXiv:2603.26236. 2026.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Davidov, Jonathan, Aviv Slobodkin, Shmuel Tomi Klein, Reut Tsarfaty, Ido Dagan, and <strong>Ayal Klein</strong>.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2026.eacl-long.112.pdf" target="_blank" rel="noopener">"Effective QA-driven Annotation of Predicate-Argument Relations Across Languages"</a>
+        </p>
+        <p class="pub-venue">Proceedings of EACL 2026 (Long Papers), pp. 2484–2502, Rabat, Morocco. Association for Computational Linguistics. 2026.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Klein, <strong>Ayal</strong>, Jiayu Song, Jenny Chim, Liran Keren, Andreas Triantafyllopoulos, Björn W. Schuller, Maria Liakata, and Dana Atzil-Slonim.</p>
+        <p class="pub-title">
+          <a href="https://formative.jmir.org/2026/1/e71230" target="_blank" rel="noopener">"Clinical Summaries of Social Media Timelines for Mental Health Monitoring: Human vs. Large Language Model Comparative Evaluation"</a>
+        </p>
+        <p class="pub-venue">JMIR Formative Research 2026; 10:e71230. doi:10.2196/71230. 2026.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Tseytlin, Maria, Paul Roit, Omri Abend, Ido Dagan, and <strong>Ayal Klein</strong>.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2025.ijcnlp-long.147/" target="_blank" rel="noopener">"QA-Noun: Representing Nominal Semantics via Natural Language Question-Answer Pairs"</a>
+        </p>
+        <p class="pub-venue">Proceedings of IJCNLP-AACL 2025, pp. 2727–2741, Mumbai, India. 2025.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Tseriotou, Talia, Jenny Chim, <strong>Ayal Klein</strong>, Aya Shamir, Guy Dvir, Iqra Ali, et al.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2025.clpsych-1.16/" target="_blank" rel="noopener">"Overview of the CLPsych 2025 Shared Task: Capturing Mental Health Dynamics from Social Media Timelines"</a>
+        </p>
+        <p class="pub-venue">Proceedings of CLPsych 2025, pp. 193–217, Albuquerque, New Mexico. Association for Computational Linguistics. 2025.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Zhang, Shiyue, David Wan, Arie Cattan, <strong>Ayal Klein</strong>, Ido Dagan, and Mohit Bansal.</p>
+        <p class="pub-title">
+          <a href="https://arxiv.org/abs/2412.07096" target="_blank" rel="noopener">"QAPyramid: Fine-grained Evaluation of Content Selection for Text Summarization"</a>
+        </p>
+        <p class="pub-venue">Proceedings of COLM 2025. Association for Computational Linguistics. 2025.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Triantafyllopoulos, Andreas, Yannik Terhorst, Iosif Tsangko, Florian B. Pokorny, <strong>Ayal Klein</strong>, et al.</p>
+        <p class="pub-title">
+          <a href="https://arxiv.org/abs/2411.11880" target="_blank" rel="noopener">"Large language models for mental health"</a>
+        </p>
+        <p class="pub-venue">arXiv preprint arXiv:2411.11880. 2024.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Roit, Paul, Aviv Slobodkin, Eran Hirsch, Arie Cattan, <strong>Ayal Klein</strong>, Valentina Pyatkin, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2024.acl-long.863/" target="_blank" rel="noopener">"Explicating the Implicit: Argument Detection Beyond Sentence Boundaries"</a>
+        </p>
+        <p class="pub-venue">Proceedings of ACL 2024 (Volume 1: Long Papers), pp. 16394–16409, Bangkok, Thailand. 2024.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Pesahov, Leon, <strong>Ayal Klein</strong>, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2023.dmr-1.8/" target="_blank" rel="noopener">"QA-Adj: Adding Adjectives to QA-based Semantics"</a>
+        </p>
+        <p class="pub-venue">Proceedings of the 4th International Workshop on Designing Meaning Representations, pp. 74–88, Nancy, France. ACL. 2023.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Klein, <strong>Ayal</strong>, Eran Hirsch, Ron Eliav, Valentina Pyatkin, Avi Caciularu, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2022.emnlp-main.528/" target="_blank" rel="noopener">"QASem Parsing: Text-to-text Modeling of QA-based Semantics"</a>
+        </p>
+        <p class="pub-venue">Proceedings of EMNLP 2022, pp. 7742–7756, Abu Dhabi. Association for Computational Linguistics. 2022.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Klein, <strong>Ayal</strong>, Oren Pereg, Daniel Korat, Vasudev Lal, Moshe Wasserblat, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2022.wassa-1.11/" target="_blank" rel="noopener">"Opinion-based Relational Pivoting for Cross-domain Aspect Term Extraction"</a>
+        </p>
+        <p class="pub-venue">Proceedings of WASSA 2022, pp. 104–112. Association for Computational Linguistics. 2022.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Weiss, Daniela Brook, Paul Roit, <strong>Ayal Klein</strong>, Ori Ernst, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2021.emnlp-main.778/" target="_blank" rel="noopener">"QA-Align: Representing Cross-Text Content Overlap by Aligning Question-Answer Propositions"</a>
+        </p>
+        <p class="pub-venue">Proceedings of EMNLP 2021, pp. 9879–9894. Association for Computational Linguistics. 2021.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Klein, <strong>Ayal</strong>, Jonathan Mamou, Valentina Pyatkin, Daniela Stepanov, Hangfeng He, Dan Roth, Luke Zettlemoyer, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2020.coling-main.274/" target="_blank" rel="noopener">"QANom: Question-answer driven SRL for nominalizations"</a>
+        </p>
+        <p class="pub-venue">Proceedings of COLING 2020, pp. 3069–3083. 2020.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Pyatkin, Valentina, <strong>Ayal Klein</strong>, Reut Tsarfaty, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2020.emnlp-main.224/" target="_blank" rel="noopener">"QADiscourse — Discourse Relations as QA Pairs: Representation, Crowdsourcing and Baselines"</a>
+        </p>
+        <p class="pub-venue">Proceedings of EMNLP 2020, pp. 2804–2819. Association for Computational Linguistics. 2020.</p>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-authors">Roit, Paul, <strong>Ayal Klein</strong>, Daniela Stepanov, Jonathan Mamou, Julian Michael, Gabriel Stanovsky, Luke Zettlemoyer, and Ido Dagan.</p>
+        <p class="pub-title">
+          <a href="https://aclanthology.org/2020.acl-main.626/" target="_blank" rel="noopener">"Controlled Crowdsourcing for High-Quality QA-SRL Annotation"</a>
+        </p>
+        <p class="pub-venue">Proceedings of ACL 2020, pp. 7008–7013. Association for Computational Linguistics. 2020.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Teaching -->
+<section id="teaching">
+  <div class="container">
+    <p class="section-label">Teaching</p>
+    <h2 class="section-title">Teaching Experience</h2>
+    <div class="divider"></div>
+    <div class="teach-list">
+
+      <div class="teach-item">
+        <div class="teach-dot"></div>
+        <p><strong>Object Oriented Programming</strong> — Lecturer, Department of Computer Science, Ariel University (2026)</p>
+      </div>
+      <div class="teach-item">
+        <div class="teach-dot"></div>
+        <p><strong>Databases</strong> — Lecturer, Department of Computer Science, Ariel University (2025–present)</p>
+      </div>
+      <div class="teach-item">
+        <div class="teach-dot"></div>
+        <p><strong>Advanced Models of Language Understanding</strong> — Lecturer, Department of Computer Science, Ariel University (2025–present)</p>
+      </div>
+      <div class="teach-item">
+        <div class="teach-dot"></div>
+        <p><strong>Artificial Neural Networks</strong> (27-436) — Lecturer, Neuroscience Department, Bar Ilan University (2023–2024)</p>
+      </div>
+      <div class="teach-item">
+        <div class="teach-dot"></div>
+        <p><strong>Object Oriented Programming</strong> (89-111) — Teaching Assistant, Department of Computer Science, Bar Ilan University (2019–2020)</p>
+      </div>
+      <div class="teach-item">
+        <div class="teach-dot"></div>
+        <p><strong>Discrete Mathematics 1</strong> (89-195) — Teaching Assistant, Department of Computer Science, Bar Ilan University (2019)</p>
+      </div>
+      <div class="teach-item">
+        <div class="teach-dot"></div>
+        <p><strong>Text Understanding</strong> (89-565) — Teaching Assistant, Department of Computer Science, Bar Ilan University (2018)</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-chip">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a>
+      </div>
+      <div class="contact-chip">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:ayalk@ariel.ac.il">ayalk@ariel.ac.il</a>
+      </div>
+      <div class="contact-chip">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://www.linkedin.com/in/ayalklein33298a61/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <p class="contact-note">
+      For consulting enquiries, please visit the <a href="NLPServices.html">Applied NLP Architecture &amp; Consulting</a> page for details on project scope and availability.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>Ayal Klein, Ph.D. &nbsp;·&nbsp; <a href="https://sites.google.com/view/ayalkleinlab/home" target="_blank" rel="noopener">NLP for Human Sciences Lab</a> &nbsp;·&nbsp; <a href="NLPServices.html">Consulting Services</a></p>
+</footer>
+
+</body>
+</html>
