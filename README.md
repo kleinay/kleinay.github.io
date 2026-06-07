@@ -23,21 +23,8 @@ I completed my B.Sc. (2015) in Psychology and Philosophy at [Bar Ilan University
 My broader academic interests span psychology, cognitive and social sciences, linguistics, philosophy, mathematics, and computational methods --- fields that together shape a vision of AI as a catalyst for integrative scientific understanding. 
 I'm also enthusiastic about cross-disciplanry collaborations of AI and Data-Science specialists with social sciences and humanities, aiming at revolutionzing the way we investigate, measure and confirm/disprove scientific research questions in the ``softer'' sciences.    
 
-## About 
 
-I am a Lecturer (Principal Investigator) in the [Department of Computer Science, Ariel University](https://www.ariel.ac.il/wp/cs/en/), where I lead the [NLP for Human Sciences Lab](https://sites.google.com/view/ayalkleinlab/home).
-My research explores the intersection of Artificial Intelligence and the Human Sciences, focusing on how Large Language Models (LLMs) can advance our understanding of complex human phenomena while enhancing scientific discovery itself.
-
-Methodologically, I work on interpretable and causal NLP, with an emphasis on LLM interpretability, concept-based representations, and model-based reasoning that bridges data-driven AI and theory-driven science.
-
-Before joining Ariel University, I was a post-doctoral researcher at Queen Mary University of London and Bar-Ilan University, working with Prof. Maria Liakata and Prof. Dana Atzil-Slonim on applying advanced NLP to psychotherapy research --- aiming to uncover the mental processes and dynamics underlying effective therapeutic change.
-
-I completed my B.Sc. (2015) in Psychology and Philosophy at [Bar Ilan University](http://www1.biu.ac.il/indexE.php), and my M.Sc. (2018) and Ph.D. (2024) in Computer Science, in the [Natural Language Processing Lab](https://biu-nlp.github.io/) at Bar Ilan University under the supervision of [Prof. Ido Dagan](http://www.cs.biu.ac.il/~dagan/). My doctoral research focused on semantic representations, particularly [the QASem project](#the-qasem-project).  
-
-My broader academic interests span psychology, cognitive and social sciences, linguistics, philosophy, mathematics, and computational methods --- fields that together shape a vision of AI as a catalyst for integrative scientific understanding. 
-I'm also enthusiastic about cross-disciplinary collaborations of AI and Data-Science specialists with social sciences and humanities, aiming at revolutionizing the way we investigate, measure and confirm/disprove scientific research questions in the "softer" sciences.    
-
-**Industry Solutions & Consulting:** Alongside my academic work, I design and deliver custom NLP architecture and custom-owned LLM solutions for research labs, startups, and private organizations. [**Click here to learn more about my consulting services**](NLPServices.md).
+**Industry Solutions & Consulting:** Alongside my academic work, I design and deliver custom NLP architecture and custom-owned LLM solutions for research labs, startups, and private organizations. [**Click here to learn more about my consulting services**](NLPServices.html).
 
 ## The QASem project
 
