@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NLP for Human Sciences Lab — Ariel University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0f2240;
+      --navy-mid:    #16325c;
+      --teal:        #0f766e;
+      --teal-light:  #14b8a6;
+      --teal-pale:   #ccfbf1;
+      --bg:          #f4f8f7;
+      --white:       #ffffff;
+      --text:        #1a2230;
+      --muted:       #576071;
+      --border:      #d8e8e6;
+      --radius:      10px;
+      --shadow:      0 4px 24px rgba(15,34,64,.09);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 1rem; }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: .01em;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
+    .nav-links a { color: #a9bdd8; text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; white-space: nowrap; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links .nav-ext a { color: #6a8fad; font-size: .8rem; }
+    .nav-links .nav-ext a:hover { color: #c5d8f5; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0d2b4a 50%, #0a3d35 100%);
+      color: #fff;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      border: 1px solid rgba(20,184,166,.35);
+      padding: .22rem .85rem;
+      border-radius: 20px;
+      margin-bottom: 1.1rem;
+    }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: .5rem;
+      letter-spacing: -.01em;
+    }
+    .hero h1 span { color: var(--teal-light); }
+    .hero-sub {
+      max-width: 660px;
+      margin: .9rem auto 2.2rem;
+      font-size: 1.05rem;
+      color: #9bbdd4;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: .65rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s, background .2s;
+    }
+    .btn-teal {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(15,118,110,.4);
+    }
+    .btn-teal:hover { background: #0d6b63; transform: translateY(-2px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,.3);
+      color: #c5d8f5;
+    }
+    .btn-outline:hover { border-color: #fff; color: #fff; transform: translateY(-2px); }
+
+    /* ── Sections ── */
+    section { padding: 4.5rem 2rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: .45rem; }
+    .section-title { font-family: 'Sora', sans-serif; font-size: clamp(1.4rem, 2.8vw, 1.85rem); font-weight: 700; color: var(--navy); margin-bottom: .9rem; line-height: 1.25; }
+    .divider { width: 40px; height: 3px; background: var(--teal); border-radius: 2px; margin-bottom: 1.6rem; }
+
+    /* ── Mission ── */
+    #mission { background: var(--white); }
+    .mission-text { max-width: 780px; }
+    .mission-text p { font-size: 1rem; color: var(--muted); line-height: 1.82; margin-bottom: 1rem; }
+    .mission-text p:last-child { margin-bottom: 0; }
+    .mission-text a { color: var(--teal); text-decoration: none; font-weight: 500; }
+    .mission-text a:hover { text-decoration: underline; }
+
+    /* ── Research Lines ── */
+    #research { background: var(--bg); }
+    .rlines-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+    .rline-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.6rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .rline-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .rline-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--teal-pale);
+      line-height: 1;
+      margin-bottom: .55rem;
+    }
+    .rline-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .55rem; line-height: 1.35; }
+    .rline-card p { font-size: .9rem; color: var(--muted); line-height: 1.72; }
+    .rline-horizon {
+      margin-top: .8rem;
+      font-size: .82rem;
+      color: var(--teal);
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      gap: .4rem;
+    }
+    .rline-horizon::before { content: "→"; flex-shrink: 0; }
+
+    /* ── Projects ── */
+    #projects { background: var(--white); }
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.3rem; }
+    .proj-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.4rem;
+      transition: box-shadow .2s;
+    }
+    .proj-card:hover { box-shadow: var(--shadow); }
+    .proj-tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .18rem .6rem;
+      border-radius: 4px;
+      margin-bottom: .7rem;
+    }
+    .tag-clinical { background: #d1faf5; color: #0d6b63; }
+    .tag-interp   { background: #e0e7ff; color: #3730a3; }
+    .tag-nlp      { background: #fef3c7; color: #92400e; }
+    .tag-lang     { background: #fce7f3; color: #9d174d; }
+    .proj-card h3 { font-size: .95rem; font-weight: 600; color: var(--navy); margin-bottom: .4rem; line-height: 1.4; }
+    .proj-card p { font-size: .87rem; color: var(--muted); line-height: 1.7; }
+    .proj-collab { margin-top: .6rem; font-size: .8rem; color: var(--muted); font-style: italic; }
+
+    /* ── Get Involved ── */
+    #involved { background: var(--bg); }
+    .involved-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 860px; }
+    @media (max-width: 640px) { .involved-grid { grid-template-columns: 1fr; } }
+    .involved-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.6rem;
+    }
+    .involved-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .5rem; }
+    .involved-card p { font-size: .92rem; color: var(--muted); line-height: 1.75; }
+    .involved-card a { color: var(--teal); font-weight: 500; text-decoration: none; }
+    .involved-card a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: #506a8a;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: .82rem;
+    }
+    footer a { color: #7e9ec0; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 600px) {
+      section { padding: 3rem 1.2rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NLP for Human Sciences Lab</a>
+  <ul class="nav-links">
+    <li><a href="members.html">Members</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#involved">Join Us</a></li>
+    <li class="nav-ext"><a href="../index.html">← PI Profile</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <span class="hero-eyebrow">Ariel University · Department of Computer Science</span>
+  <h1>NLP for <span>Human Sciences</span> Lab</h1>
+  <p class="hero-sub">
+    Bridging the gap between Large Language Models and the human experience — applying computational linguistics to deepen scientific understanding of mind, society, and culture.
+  </p>
+  <div class="hero-actions">
+    <a href="members.html" class="btn btn-teal">Meet the Team</a>
+    <a href="#research" class="btn btn-outline">Research Lines</a>
+    <a href="#projects" class="btn btn-outline">Active Projects</a>
+  </div>
+</div>
+
+<!-- Mission -->
+<section id="mission">
+  <div class="container">
+    <p class="section-label">Mission</p>
+    <h2 class="section-title">What We Do</h2>
+    <div class="divider"></div>
+    <div class="mission-text">
+      <p>
+        We focus on the development and application of advanced tools from natural language processing to deepen the scientific understanding of people, society, and culture. As an interdisciplinary hub, we position Large Language Models as both practical instruments and testable scientific environments for studying cognition, culture, and clinical interaction.
+      </p>
+      <p>
+        We investigate the use of large-scale language models to reveal new insights in human-centered sciences — particularly within clinical psychology and social dynamics — transforming complex textual data, from therapy transcripts to social media, into a window through which we can observe and quantify human behavior and mental states.
+      </p>
+      <p>
+        In parallel, we analyze the behavior and internal representations of language models themselves to better understand the nature of language, cognition, and the relationship between artificial intelligence and the human experience — through mechanistic interpretability and latent space analysis.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Research Lines -->
+<section id="research">
+  <div class="container">
+    <p class="section-label">Research</p>
+    <h2 class="section-title">Three Research Lines</h2>
+    <div class="divider"></div>
+    <div class="rlines-grid">
+
+      <div class="rline-card">
+        <div class="rline-num">01</div>
+        <h3>Computational Clinical Psychology</h3>
+        <p>Transforming clinical interactions into quantifiable data using NLP. We analyze therapist-patient dynamics to map mechanisms of psychological change and identify digital biomarkers of mental states — providing clinicians with empirical, data-driven insights rather than subjective observations alone.</p>
+        <p class="rline-horizon">Mapping the mechanisms of psychological change through therapist-patient dynamics and session-level outcome prediction.</p>
+      </div>
+
+      <div class="rline-card">
+        <div class="rline-num">02</div>
+        <h3>NLP as Scientific Accelerator</h3>
+        <p>Serving researchers across medical sciences and digital humanities by bridging raw textual data and scientific insight. We build NLP workflows that allow domain scientists to analyze large text corpora with the depth and speed needed for rigorous empirical discovery.</p>
+        <p class="rline-horizon">Enabling researchers to ask questions at a scale and resolution previously not feasible.</p>
+      </div>
+
+      <div class="rline-card">
+        <div class="rline-num">03</div>
+        <h3>Mechanistic Interpretability &amp; In-Silico Science</h3>
+        <p>Examining AI's internal structures as experimental environments. We identify conceptual dimensions of latent representations corresponding to human constructs, using model perturbations for causal simulation — advancing scientific methodology through active experimentation within the learned structure of language models.</p>
+        <p class="rline-horizon">Turning LLMs into in-silico laboratories for theory-driven cognitive and social science experiments.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Projects</p>
+    <h2 class="section-title">Active Research Projects</h2>
+    <div class="divider"></div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <span class="proj-tag tag-clinical">Clinical NLP</span>
+        <h3>Sequences that Heal: Discovering Effective Patterns in Psychotherapy</h3>
+        <p>Using annotated psychotherapy data to identify which sequences of therapist interventions and patient self-states foster positive change, connecting NLP-detected patterns to treatment outcomes.</p>
+        <p class="proj-collab">Collab: Prof. Dana Atzil-Slonim (Bar-Ilan University)</p>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-tag tag-clinical">Clinical NLP</span>
+        <h3>Quantifying the Unspoken: Computational Modeling of Mentalization in Therapy</h3>
+        <p>Developing NLP frameworks to automatically identify mentalization (reflective functioning) in clinical transcripts, examining how mentalizing-focused techniques facilitate psychological growth.</p>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-tag tag-clinical">Clinical NLP</span>
+        <h3>Automating MIND Prediction: Micro-level Outcomes &amp; Dyadic Dynamics</h3>
+        <p>Using language models to predict mental states at fine-grained segment-level intervals, focusing on linguistic synchrony and emotional exchange to track immediate shifts in session quality within five-minute windows.</p>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-tag tag-interp">Interpretability</span>
+        <h3>Probe and Perturb: In-Silico Experiments via Latent Space Interventions</h3>
+        <p>The lab's flagship project. Probing LLM latent spaces to identify directions aligned with constructs like therapist directiveness and patient defensiveness, enabling controlled in-silico experiments.</p>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-tag tag-interp">Interpretability</span>
+        <h3>LoCAV: Identifying Low-Rank Conceptual Vectors in Latent Space</h3>
+        <p>Developing methodologies to isolate conceptual vectors within LLMs using low-rank subspaces and concept activation vectors, supporting white-box AI transparency and targeted model interventions.</p>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-tag tag-lang">Language &amp; Register</span>
+        <h3>Multilingual Slang and Register Representations</h3>
+        <p>Investigating how multilingual language models encode different linguistic registers — particularly informal language and slang — across diverse language families.</p>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-tag tag-nlp">Digital Humanities</span>
+        <h3>Kabbalah and Cross-Cultural Textual Influence</h3>
+        <p>Applying computational methods to analyze cross-cultural textual influence and transmission patterns in historical and religious texts, exemplifying the lab's NLP-as-accelerator vision in the humanities.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Get Involved -->
+<section id="involved">
+  <div class="container">
+    <p class="section-label">Get Involved</p>
+    <h2 class="section-title">Join the Lab</h2>
+    <div class="divider"></div>
+    <div class="involved-grid">
+      <div class="involved-card">
+        <h3>For Students</h3>
+        <p>We are looking for motivated researchers interested in the intersection of LLMs, psychology, and interpretability. If you want to work at the frontier of AI and human science, reach out with a brief description of your background and interests.</p>
+        <p style="margin-top: .8rem;"><a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a></p>
+      </div>
+      <div class="involved-card">
+        <h3>For Collaborators</h3>
+        <p>We are always open to new interdisciplinary partnerships where language-related technologies can unlock new perspectives in scientific or clinical textual data. If you have a research question and a corpus, let's talk.</p>
+        <p style="margin-top: .8rem;"><a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>NLP for Human Sciences Lab &nbsp;·&nbsp; Ariel University &nbsp;·&nbsp; <a href="../index.html">PI Academic Profile</a> &nbsp;·&nbsp; <a href="../NLPServices.html">Consulting Services</a></p>
+</footer>
+
+</body>
+</html>

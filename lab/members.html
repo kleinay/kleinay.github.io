@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members — NLP for Human Sciences Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0f2240;
+      --navy-mid:    #16325c;
+      --teal:        #0f766e;
+      --teal-light:  #14b8a6;
+      --teal-pale:   #ccfbf1;
+      --bg:          #f4f8f7;
+      --white:       #ffffff;
+      --text:        #1a2230;
+      --muted:       #576071;
+      --border:      #d8e8e6;
+      --radius:      10px;
+      --shadow:      0 4px 24px rgba(15,34,64,.09);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 1rem; }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-logo { font-family: 'Sora', sans-serif; font-size: .88rem; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap; }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
+    .nav-links a { color: #a9bdd8; text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links .nav-ext a { color: #6a8fad; font-size: .8rem; }
+    .nav-links .nav-ext a:hover { color: #c5d8f5; }
+
+    /* ── Page Header ── */
+    .page-header {
+      background: linear-gradient(135deg, var(--navy) 0%, #0d2b4a 50%, #0a3d35 100%);
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .page-header .eyebrow {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      border: 1px solid rgba(20,184,166,.35);
+      padding: .22rem .85rem;
+      border-radius: 20px;
+      margin-bottom: .9rem;
+    }
+    .page-header h1 { font-family: 'Sora', sans-serif; font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; }
+    .page-header p { margin-top: .7rem; font-size: .97rem; color: #9bbdd4; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    /* ── Sections ── */
+    section { padding: 4rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-label { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: .4rem; }
+    .section-title { font-family: 'Sora', sans-serif; font-size: clamp(1.3rem, 2.5vw, 1.6rem); font-weight: 700; color: var(--navy); margin-bottom: .8rem; }
+    .divider { width: 36px; height: 3px; background: var(--teal); border-radius: 2px; margin-bottom: 1.8rem; }
+
+    /* ── PI Card ── */
+    #pi { background: var(--white); }
+    .pi-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 860px;
+    }
+    @media (max-width: 600px) {
+      .pi-card { grid-template-columns: 1fr; text-align: center; }
+      .pi-photo { margin: 0 auto; }
+    }
+    .pi-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 3px solid var(--border);
+      flex-shrink: 0;
+    }
+    .pi-body h2 { font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; }
+    .pi-role { font-size: .85rem; font-weight: 600; color: var(--teal); letter-spacing: .04em; text-transform: uppercase; margin-bottom: .9rem; }
+    .pi-body p { font-size: .93rem; color: var(--muted); line-height: 1.78; margin-bottom: .7rem; }
+    .pi-body p:last-child { margin-bottom: 0; }
+    .pi-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .pi-links a {
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+    .pi-links a:hover { text-decoration: underline; }
+
+    /* ── Student Cards ── */
+    #students { background: var(--bg); }
+    .student-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.4rem; }
+    .student-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.6rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .student-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .student-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--teal-light);
+    }
+    .student-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: .15rem; }
+    .student-degree {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--teal-pale);
+      color: var(--teal);
+      padding: .18rem .6rem;
+      border-radius: 4px;
+      margin-bottom: .8rem;
+    }
+    .student-card p { font-size: .88rem; color: var(--muted); line-height: 1.72; }
+
+    /* ── Join Section ── */
+    #join { background: var(--navy); color: #fff; }
+    #join .section-label { color: var(--teal-light); }
+    #join .section-title { color: #fff; }
+    #join .divider { background: var(--teal-light); }
+    .join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 800px; }
+    @media (max-width: 640px) { .join-grid { grid-template-columns: 1fr; } }
+    .join-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.5rem;
+    }
+    .join-card h3 { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: .5rem; }
+    .join-card p { font-size: .9rem; color: #9bbdd4; line-height: 1.75; }
+    .join-card a { color: var(--teal-light); font-weight: 500; text-decoration: none; }
+    .join-card a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer { background: #08182e; color: #506a8a; text-align: center; padding: 1.4rem 2rem; font-size: .82rem; }
+    footer a { color: #7e9ec0; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 600px) { section { padding: 2.8rem 1.2rem; } nav { padding: 0 1rem; } .nav-links { gap: .8rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NLP for Human Sciences Lab</a>
+  <ul class="nav-links">
+    <li><a href="members.html" class="active">Members</a></li>
+    <li><a href="index.html#research">Research</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#involved">Join Us</a></li>
+    <li class="nav-ext"><a href="../index.html">← PI Profile</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <span class="eyebrow">NLP for Human Sciences Lab</span>
+  <h1>Lab Members</h1>
+  <p>The people behind the research</p>
+</div>
+
+<!-- PI -->
+<section id="pi">
+  <div class="container">
+    <p class="section-label">Principal Investigator</p>
+    <h2 class="section-title">Lab Director</h2>
+    <div class="divider"></div>
+    <div class="pi-card">
+      <img src="/docs/assets/myportrait3.jpg" alt="Portrait of Dr. Ayal Klein" class="pi-photo" />
+      <div class="pi-body">
+        <h2>Dr. Ayal Klein</h2>
+        <p class="pi-role">Lecturer &amp; Lab Director · Ariel University</p>
+        <p>
+          I have always operated at the seams between disciplines. While my academic home is in Computer Science and NLP, my background is multi-faceted, and I have spent years navigating the dialogue between formal logic and the nuanced, often subjective worlds of human thought and culture.
+        </p>
+        <p>
+          I established the NLP for Human Sciences Lab at Ariel University to connect advanced AI with the traditionally complex terrain of human sciences — translating human-centered questions into computational models, and using machine learning and language models as instruments for both scientific advancement and deeper self-understanding.
+        </p>
+        <div class="pi-links">
+          <a href="../index.html">Academic Profile →</a>
+          <a href="../NLPServices.html">Consulting Services →</a>
+          <a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Students -->
+<section id="students">
+  <div class="container">
+    <p class="section-label">Graduate Students</p>
+    <h2 class="section-title">Current Members</h2>
+    <div class="divider"></div>
+    <div class="student-grid">
+
+      <div class="student-card">
+        <div class="student-avatar">NL</div>
+        <h3>Nitay Levi</h3>
+        <span class="student-degree">M.Sc. Student</span>
+        <p>
+          Developing a novel framework for concept-based model control to address challenges of transparency and safety in LLMs. The approach uses low-rank subspaces and concept activation vectors (LoCAV) to isolate cognitive signals within neural networks, enhance interpretability of knowledge encoding, and enable targeted interventions in model outputs.
+        </p>
+      </div>
+
+      <!-- Add new members by duplicating the block above -->
+
+    </div>
+  </div>
+</section>
+
+<!-- Join -->
+<section id="join">
+  <div class="container">
+    <p class="section-label">Opportunities</p>
+    <h2 class="section-title">Join the Lab</h2>
+    <div class="divider"></div>
+    <div class="join-grid">
+      <div class="join-card">
+        <h3>For Prospective Students</h3>
+        <p>We are looking for motivated researchers interested in the intersection of LLMs, psychology, and interpretability. If you want to work at the frontier of AI and human science, reach out with a brief description of your background and interests.</p>
+        <p style="margin-top:.8rem;"><a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a></p>
+      </div>
+      <div class="join-card">
+        <h3>For Collaborators</h3>
+        <p>We are always open to new interdisciplinary partnerships where language technologies can unlock new perspectives in scientific or clinical textual data. If you have a research question and a corpus, let's talk.</p>
+        <p style="margin-top:.8rem;"><a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>NLP for Human Sciences Lab &nbsp;·&nbsp; Ariel University &nbsp;·&nbsp; <a href="../index.html">PI Academic Profile</a> &nbsp;·&nbsp; <a href="../NLPServices.html">Consulting Services</a></p>
+</footer>
+
+</body>
+</html>
