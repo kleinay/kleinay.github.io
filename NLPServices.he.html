@@ -68,10 +68,11 @@
     nav .nav-links a:hover { color: #fff; }
 
     /* Language switcher */
-    .lang-switch { display: flex; align-items: center; gap: .3rem; }
-    .lang-switch a { font-size: 1.35rem; line-height: 1; text-decoration: none; opacity: .45; transition: opacity .2s, transform .15s; border-radius: 4px; padding: .1rem .2rem; }
-    .lang-switch a:hover { opacity: .85; transform: scale(1.15); }
+    .lang-switch { display: flex; align-items: center; gap: .4rem; }
+    .lang-switch a { display: flex; text-decoration: none; opacity: .4; transition: opacity .2s, transform .15s; }
+    .lang-switch a:hover { opacity: .8; transform: scale(1.12); }
     .lang-switch a.active { opacity: 1; }
+    .lang-switch img { width: 22px; height: 22px; border-radius: 3px; display: block; }
 
     /* ── Hero ── */
     .hero {
@@ -340,8 +341,8 @@
     <li><a href="#contact">צור קשר</a></li>
     <li><a href="index.html">פרופיל אקדמי</a></li>
     <li class="lang-switch">
-      <a href="NLPServices.html" title="English">🇬🇧</a>
-      <a href="NLPServices.he.html" class="active" title="עברית">🇮🇱</a>
+      <a href="NLPServices.html" title="English"><img src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/assets/72x72/1f1ec-1f1e7.png" alt="English"></a>
+      <a href="NLPServices.he.html" class="active" title="עברית"><img src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/assets/72x72/1f1ee-1f1f1.png" alt="עברית"></a>
     </li>
   </ul>
 </nav>
