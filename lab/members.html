@@ -99,16 +99,11 @@
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      overflow: hidden;
+      background-image: url('/docs/assets/myportrait_italy.jpeg');
+      background-size: 200%;
+      background-position: center 8%;
       border: 3px solid var(--border);
       flex-shrink: 0;
-    }
-    .pi-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(2);
-      transform-origin: center 30%;
     }
     .pi-body h2 { font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; }
     .pi-role { font-size: .85rem; font-weight: 600; color: var(--teal); letter-spacing: .04em; text-transform: uppercase; margin-bottom: .9rem; }
@@ -215,7 +210,7 @@
     <h2 class="section-title">Lab Director</h2>
     <div class="divider"></div>
     <div class="pi-card">
-      <div class="pi-photo"><img src="/docs/assets/myportrait_italy.jpeg" alt="Portrait of Dr. Ayal Klein" /></div>
+      <div class="pi-photo" role="img" aria-label="Portrait of Dr. Ayal Klein"></div>
       <div class="pi-body">
         <h2>Dr. Ayal Klein</h2>
         <p class="pi-role">Lecturer &amp; Lab Director · Ariel University</p>
