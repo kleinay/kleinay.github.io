@@ -148,11 +148,17 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
+      overflow: hidden;
       border: 4px solid rgba(255,255,255,.18);
       box-shadow: 0 8px 32px rgba(0,0,0,.35);
       flex-shrink: 0;
+    }
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(2);
+      transform-origin: center 15%;
     }
     @media (max-width: 640px) {
       .hero-inner { grid-template-columns: 1fr; text-align: center; }
@@ -466,7 +472,7 @@
         <a href="NLPServices.html" class="btn btn-outline">Consulting Services</a>
       </div>
     </div>
-    <img src="/docs/assets/myportrait_italy.jpeg" alt="Portrait of Ayal Klein" class="hero-portrait" />
+    <div class="hero-portrait"><img src="/docs/assets/myportrait_italy.jpeg" alt="Portrait of Ayal Klein" /></div>
   </div>
 </div>
 
