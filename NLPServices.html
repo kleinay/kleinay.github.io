@@ -67,11 +67,10 @@
     nav .nav-links a:hover { color: #fff; }
 
     /* Language switcher */
-    .lang-switch { display: flex; align-items: center; gap: .35rem; font-size: .82rem; font-weight: 600; }
-    .lang-switch a { color: #a9bdd8; text-decoration: none; padding: .18rem .45rem; border-radius: 4px; transition: color .2s, background .2s; }
-    .lang-switch a:hover { color: #fff; }
-    .lang-switch a.active { color: #fff; background: rgba(255,255,255,.13); }
-    .lang-switch .sep { color: #3d5a78; }
+    .lang-switch { display: flex; align-items: center; gap: .3rem; }
+    .lang-switch a { font-size: 1.35rem; line-height: 1; text-decoration: none; opacity: .45; transition: opacity .2s, transform .15s; border-radius: 4px; padding: .1rem .2rem; }
+    .lang-switch a:hover { opacity: .85; transform: scale(1.15); }
+    .lang-switch a.active { opacity: 1; }
 
     /* ── Hero ── */
     .hero {
@@ -342,9 +341,8 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="index.html">Academic Profile</a></li>
     <li class="lang-switch">
-      <a href="NLPServices.html" class="active">EN</a>
-      <span class="sep">|</span>
-      <a href="NLPServices.he.html">עב</a>
+      <a href="NLPServices.html" class="active" title="English">🇬🇧</a>
+      <a href="NLPServices.he.html" title="עברית">🇮🇱</a>
     </li>
   </ul>
 </nav>
