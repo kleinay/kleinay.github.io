@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applied AI Systems — Ayal Klein &amp; Yishai Stern</title>
+  <meta name="description" content="An applied AI team combining research-grade NLP and LLM expertise with enterprise software engineering — building secure, custom AI systems for organizations working with complex structured and unstructured data." />
+  <meta property="og:title" content="Applied AI Systems — Ayal Klein &amp; Yishai Stern" />
+  <meta property="og:description" content="Research-grade AI. Production-grade engineering. We design and build secure AI systems for organizations working with complex organizational data." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://kleinay.github.io/ai-systems.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #13293D;
+      --navy-mid:   #1E4563;
+      --teal:       #3E7C83;
+      --teal-light: #63a0a7;
+      --bg:         #F7F8FA;
+      --white:      #ffffff;
+      --text:       #1B2630;
+      --muted:      #5C6873;
+      --border:     #dfe4e9;
+      --radius:     10px;
+      --shadow:     0 4px 24px rgba(19,41,61,.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--teal-light);
+      outline-offset: 2px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.2);
+    }
+    .nav-logo {
+      font-family: 'Manrope', sans-serif;
+      font-size: .95rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--teal-light); }
+    .nav-links {
+      display: flex;
+      gap: 1.7rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #b7c3cd;
+      text-decoration: none;
+      font-size: .87rem;
+      font-weight: 500;
+      transition: color .2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links .nav-cta a {
+      background: var(--teal);
+      color: #fff;
+      padding: .45rem 1.05rem;
+      border-radius: 7px;
+      font-weight: 600;
+    }
+    .nav-links .nav-cta a:hover { background: #487f86; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: .3rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: .5rem 0;
+        display: none;
+        box-shadow: 0 8px 20px rgba(0,0,0,.25);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: .8rem 1.5rem; width: 100%; }
+      .nav-links .nav-cta { padding: .6rem 1.5rem; }
+      .nav-links .nav-cta a { display: inline-block; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 5.5rem 2rem 4.5rem;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      border: 1px solid rgba(99,160,167,.4);
+      padding: .28rem .9rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(2rem, 4.6vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.01em;
+      margin-bottom: 1.3rem;
+    }
+    .hero-sub {
+      max-width: 560px;
+      font-size: 1.05rem;
+      color: #cbd6dd;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .hero-sub-alt {
+      max-width: 560px;
+      font-size: .95rem;
+      color: #9fb0ba;
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.7rem;
+      border-radius: var(--radius);
+      font-size: .93rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s, background .2s;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(62,124,131,.4);
+    }
+    .btn-primary:hover { background: #487f86; transform: translateY(-2px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,.3);
+      color: #d8e2e6;
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: #fff; color: #fff; transform: translateY(-2px); }
+    .btn-outline-dark {
+      border: 1.5px solid var(--border);
+      color: var(--navy-mid);
+      background: transparent;
+    }
+    .btn-outline-dark:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* Hero visual: abstract node motif */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual svg { width: 100%; height: auto; max-width: 380px; }
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; max-width: 260px; margin: 0 auto 1rem; }
+      .hero-sub, .hero-sub-alt { max-width: 100%; }
+    }
+
+    /* ── Trust strip ── */
+    .trust-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.6rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .trust-item {
+      font-size: .87rem;
+      font-weight: 600;
+      color: var(--navy-mid);
+      text-align: center;
+      padding: .4rem .5rem;
+      border-left: 2px solid var(--teal);
+    }
+    @media (max-width: 760px) {
+      .trust-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Sections ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .55rem;
+    }
+    .section-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.05rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    .section-intro {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 2.8rem;
+    }
+    .divider { width: 44px; height: 3px; background: var(--teal); border-radius: 2px; margin-bottom: 1.4rem; }
+
+    /* ── Capabilities ── */
+    #capabilities { background: var(--bg); }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .cap-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.6rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .cap-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .cap-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .cap-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--teal-light); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cap-card h3 { font-size: 1.02rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; line-height: 1.35; }
+    .cap-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── Use cases ── */
+    #use-cases { background: var(--white); }
+    .uc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem 2rem;
+    }
+    .uc-item {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      padding: .3rem 0;
+    }
+    .uc-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+      margin-top: .6rem;
+    }
+    .uc-item p { font-size: .93rem; color: var(--text); line-height: 1.65; }
+    .uc-note {
+      margin-top: 2.4rem;
+      background: var(--bg);
+      border-left: 3px solid var(--teal);
+      border-radius: 7px;
+      padding: 1.1rem 1.4rem;
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 780px;
+    }
+    .uc-note strong { color: var(--text); }
+
+    /* ── Approach / process ── */
+    #approach { background: var(--bg); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.4rem;
+    }
+    .step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.7rem 1.5rem;
+    }
+    .step-num {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: .7rem;
+    }
+    .step h3 { font-size: .98rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+    .step p { font-size: .89rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── Secure / on-prem ── */
+    #secure {
+      background: var(--navy);
+      color: #fff;
+    }
+    #secure .section-label { color: var(--teal-light); }
+    #secure .section-title { color: #fff; }
+    #secure .divider { background: var(--teal-light); }
+    .secure-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .secure-text p {
+      font-size: .98rem;
+      color: #cbd6dd;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+    .secure-list { list-style: none; display: flex; flex-direction: column; gap: .9rem; }
+    .secure-list li {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      font-size: .93rem;
+      color: #dbe4e9;
+      line-height: 1.6;
+    }
+    .secure-list svg { width: 18px; height: 18px; stroke: var(--teal-light); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: .15rem; }
+    @media (max-width: 760px) { .secure-layout { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* ── Team ── */
+    #team { background: var(--white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 760px) { .team-grid { grid-template-columns: 1fr; } }
+    .team-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+    }
+    .team-card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: .2rem;
+    }
+    .team-role {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .team-card p.bio { font-size: .92rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.2rem; }
+    .team-highlights { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.4rem; }
+    .team-highlights li {
+      display: flex; gap: .6rem; align-items: flex-start;
+      font-size: .87rem; color: var(--text); line-height: 1.5;
+    }
+    .team-highlights li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+      margin-top: .5rem;
+    }
+    .team-links { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
+    .team-links a {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .86rem; font-weight: 600; color: var(--navy-mid); text-decoration: none;
+    }
+    .team-links a:hover { color: var(--teal); }
+    .team-links svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── Why this team ── */
+    #why { background: var(--bg); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .why-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.5rem;
+    }
+    .why-item h3 { font-size: .97rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+    .why-item p { font-size: .88rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── Engagement model ── */
+    #engagement { background: var(--white); }
+    .flow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 2rem;
+    }
+    .flow-step {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .8rem 1.3rem;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--navy-mid);
+    }
+    .flow-arrow { color: var(--teal); font-size: 1.1rem; }
+
+    /* ── Contact ── */
+    #contact { background: var(--navy); color: #fff; }
+    #contact .section-label { color: var(--teal-light); }
+    #contact .section-title { color: #fff; }
+    #contact .divider { background: var(--teal-light); }
+    #contact .section-intro { color: #cbd6dd; }
+    .contact-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      padding: 2.2rem 2rem;
+      max-width: 640px;
+    }
+    .contact-card p { font-size: .95rem; color: #cbd6dd; line-height: 1.75; margin-bottom: 1.6rem; }
+    .contact-emails { font-size: .88rem; color: #9fb0ba; margin-bottom: 1.6rem; }
+    .contact-emails a { color: #dbe4e9; text-decoration: none; }
+    .contact-emails a:hover { text-decoration: underline; }
+    .contact-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    footer {
+      background: #0c1c2a;
+      color: #5c7382;
+      text-align: center;
+      padding: 1.8rem 2rem;
+      font-size: .82rem;
+    }
+    footer a { color: #8ba3b0; text-decoration: none; }
+    footer a:hover { color: #fff; }
+    footer .footer-name { color: #b7c3cd; font-weight: 600; margin-bottom: .3rem; }
+
+    @media (max-width: 600px) {
+      section { padding: 3.2rem 1.2rem; }
+      .hero { padding: 4rem 1.2rem 3rem; }
+      nav { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-logo">A.K. <span>/</span> Y.S.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="index.html">Ayal's Academic Profile</a></li>
+    <li class="nav-cta"><a href="#contact">Discuss a Project</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Applied AI Systems</span>
+      <h1>Research-grade AI.<br />Production-grade engineering.</h1>
+      <p class="hero-sub">We design and build secure AI systems for organizations working with complex structured and unstructured data — from initial discovery and proof of concept to production-oriented implementation.</p>
+      <p class="hero-sub-alt">Combining advanced AI and NLP research with more than a decade of enterprise software engineering and technical leadership.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Discuss a Project</a>
+        <a href="#team" class="btn btn-outline">Meet the Team</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#63a0a7" stroke-width="1" opacity=".55">
+          <line x1="60" y1="70" x2="150" y2="120" />
+          <line x1="150" y1="120" x2="120" y2="220" />
+          <line x1="150" y1="120" x2="260" y2="100" />
+          <line x1="260" y1="100" x2="310" y2="190" />
+          <line x1="120" y1="220" x2="200" y2="290" />
+          <line x1="200" y1="290" x2="310" y2="190" />
+          <line x1="120" y1="220" x2="60" y2="290" />
+          <line x1="260" y1="100" x2="200" y2="290" />
+        </g>
+        <g opacity=".4">
+          <circle cx="330" cy="60" r="2" fill="#63a0a7" />
+          <circle cx="350" cy="90" r="2" fill="#63a0a7" />
+          <circle cx="40" cy="330" r="2" fill="#63a0a7" />
+          <circle cx="70" cy="350" r="2" fill="#63a0a7" />
+          <circle cx="20" cy="150" r="2" fill="#63a0a7" />
+        </g>
+        <g fill="#0f2f3a" stroke="#63a0a7" stroke-width="2">
+          <circle cx="60" cy="70" r="8" />
+          <circle cx="150" cy="120" r="10" />
+          <circle cx="260" cy="100" r="8" />
+          <circle cx="120" cy="220" r="9" />
+          <circle cx="310" cy="190" r="8" />
+          <circle cx="200" cy="290" r="10" />
+          <circle cx="60" cy="290" r="7" />
+        </g>
+        <g fill="#eef5f6">
+          <circle cx="150" cy="120" r="3" />
+          <circle cx="200" cy="290" r="3" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Trust strip -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">Research-driven methodology</div>
+    <div class="trust-item">Enterprise software engineering</div>
+    <div class="trust-item">Secure and on-prem deployment</div>
+    <div class="trust-item">End-to-end delivery</div>
+  </div>
+</div>
+
+<!-- Capabilities -->
+<section id="capabilities">
+  <div class="container">
+    <p class="section-label">What We Build</p>
+    <h2 class="section-title">Core Capabilities</h2>
+    <div class="divider"></div>
+    <p class="section-intro">We work across the full stack of an applied AI system — from the underlying models and data pipelines to the integrations and interfaces that make them usable inside an organization.</p>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>
+        </div>
+        <h3>Custom AI &amp; LLM Systems</h3>
+        <p>Domain-specific assistants, analysis pipelines, and model-driven workflows tailored to organizational data and processes.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>NLP &amp; Information Extraction</h3>
+        <p>Transforming documents, reports, logs, correspondence, and free text into structured, searchable, decision-relevant data.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        </div>
+        <h3>Intelligent Data Systems</h3>
+        <p>Combining machine learning, statistical modeling, embeddings, and organizational context across structured and unstructured sources — including anomaly scoring, prioritization, and decision-support signals as one part of a broader toolkit.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Retrieval &amp; Knowledge Systems</h3>
+        <p>RAG, semantic search, enterprise knowledge access, and grounded generation over internal document collections.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <h3>AI Agents &amp; Tool Integration</h3>
+        <p>Agentic workflows, MCP-based integrations, internal tools, and controlled access to databases, APIs, and organizational systems.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <h3>Private &amp; On-Prem AI</h3>
+        <p>Architectures for sensitive environments, open-weight models, local inference, controlled data access, and secure deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Use cases -->
+<section id="use-cases">
+  <div class="container">
+    <p class="section-label">Applications</p>
+    <h2 class="section-title">Where Applied AI Creates Value</h2>
+    <div class="divider"></div>
+    <p class="section-intro">The same underlying methods apply across a wide range of organizational settings. A few representative examples:</p>
+
+    <div class="uc-grid">
+      <div class="uc-item"><span class="uc-dot"></span><p>Operational and procurement intelligence</p></div>
+      <div class="uc-item"><span class="uc-dot"></span><p>Document and report analysis</p></div>
+      <div class="uc-item"><span class="uc-dot"></span><p>Internal knowledge systems</p></div>
+      <div class="uc-item"><span class="uc-dot"></span><p>Large-scale classification and information extraction</p></div>
+      <div class="uc-item"><span class="uc-dot"></span><p>Decision-support and prioritization</p></div>
+      <div class="uc-item"><span class="uc-dot"></span><p>AI-assisted engineering and organizational workflows</p></div>
+      <div class="uc-item"><span class="uc-dot"></span><p>Customer, service, and process intelligence</p></div>
+      <div class="uc-item"><span class="uc-dot"></span><p>Research and expert-coded data automation</p></div>
+    </div>
+
+    <div class="uc-note">
+      <strong>For procurement and logistics data specifically:</strong> identifying unusual patterns, inconsistencies, semantic mismatches, or cases requiring expert review across large organizational datasets — surfaced for human judgment, not automated decisions.
+    </div>
+  </div>
+</section>
+
+<!-- Approach -->
+<section id="approach">
+  <div class="container">
+    <p class="section-label">How We Work</p>
+    <h2 class="section-title">From an Ambiguous Data Problem to a Working System</h2>
+    <div class="divider"></div>
+    <p class="section-intro">You do not need a fully specified architecture before we speak — most engagements start from a business question and a sample of the available data.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Discovery &amp; Data Understanding</h3>
+        <p>Clarify the business question, map available data, identify constraints, and define what can be evaluated credibly.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Baseline &amp; Proof of Value</h3>
+        <p>Build an initial end-to-end pipeline and establish transparent quantitative or rule-based baselines.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Applied AI Development</h3>
+        <p>Add semantic models, LLMs, retrieval, integrations, and richer contextual reasoning where they provide measurable value.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Evaluation, Handoff &amp; Scale-Up</h3>
+        <p>Evaluate with domain experts, document limitations and performance, transfer knowledge, and define the path toward pilot or production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Secure / on-prem -->
+<section id="secure">
+  <div class="container">
+    <p class="section-label">Sensitive Environments</p>
+    <h2 class="section-title">Built for Sensitive Organizational Environments</h2>
+    <div class="divider"></div>
+    <div class="secure-layout">
+      <div class="secure-text">
+        <p>We can design systems that operate within the organization's infrastructure, using controlled data access, open-weight models, local inference, and internal knowledge sources. Architecture is adapted to security, privacy, procurement, and operational constraints rather than assuming unrestricted cloud access.</p>
+      </div>
+      <ul class="secure-list">
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Local or isolated model inference</li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>Controlled database and document access</li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>Auditability and explainability</li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Human review for high-impact decisions</li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>Modular integration with existing systems</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section id="team">
+  <div class="container">
+    <p class="section-label">The Team</p>
+    <h2 class="section-title">Complementary Expertise</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Our strength lies in combining advanced AI research and methodological rigor with enterprise-grade software engineering and implementation.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>Dr. Ayal Klein</h3>
+        <p class="team-role">AI Research &amp; Solutions Lead</p>
+        <p class="bio">Ayal is a Computer Science lecturer and NLP researcher specializing in large language models, semantic representations, interpretable AI, and rigorous model evaluation. He designs domain-specific AI systems for complex and sensitive data environments, bridging current research with practical organizational needs.</p>
+        <ul class="team-highlights">
+          <li>Ph.D. in NLP</li>
+          <li>Lecturer &amp; Principal Investigator, Ariel University</li>
+          <li>Director, NLP for Human Sciences Lab</li>
+          <li>LLM, NLP, explainability, and model evaluation</li>
+          <li>Custom private AI solutions</li>
+        </ul>
+        <div class="team-links">
+          <a href="index.html">Academic Profile →</a>
+          <a href="https://www.linkedin.com/in/ayalklein33298a61/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:ayal.s.klein@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <h3>Yishai Stern</h3>
+        <p class="team-role">AI Engineering &amp; Software Lead</p>
+        <p class="bio">Yishai is a software engineering team lead with more than a decade of experience building enterprise systems and leading technical teams. His recent work focuses on AI-powered developer tools, LLM workflows, MCP integrations, and taking AI capabilities from concept to reliable implementation.</p>
+        <ul class="team-highlights">
+          <li>10+ years in enterprise software</li>
+          <li>Engineering Team Lead, Productivity Engineering at ZoomInfo</li>
+          <li>Led organization-wide AI adoption initiatives</li>
+          <li>AI tooling, MCP, LangChain, and integrations</li>
+          <li>Full-stack architecture and scalable delivery</li>
+        </ul>
+        <div class="team-links">
+          <a href="https://linkedin.com/in/yishai-stern-a80ba857" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:yishainstern@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why this team -->
+<section id="why">
+  <div class="container">
+    <p class="section-label">Why This Team</p>
+    <h2 class="section-title">What the Combination Brings</h2>
+    <div class="divider"></div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>Research depth</h3>
+        <p>Understanding what models can and cannot validly infer.</p>
+      </div>
+      <div class="why-item">
+        <h3>Engineering depth</h3>
+        <p>Building reliable systems rather than isolated demos.</p>
+      </div>
+      <div class="why-item">
+        <h3>Domain adaptation</h3>
+        <p>Designing around the client's data, terminology, workflows, and constraints.</p>
+      </div>
+      <div class="why-item">
+        <h3>Clear evaluation</h3>
+        <p>Defining measurable criteria, expert review, and transparent limitations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Engagement model -->
+<section id="engagement">
+  <div class="container">
+    <p class="section-label">Getting Started</p>
+    <h2 class="section-title">Start with a Focused Proof of Value</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Projects typically begin with a defined use case and a limited proof-of-value or proof-of-concept phase. The objective is to reduce technical and business uncertainty, evaluate the available data, and establish a credible basis for deciding whether and how to scale.</p>
+
+    <div class="flow">
+      <span class="flow-step">Discovery</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">POC / POV</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Pilot</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Production</span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's Discuss Your Data and Use Case</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Share a brief description of the organizational challenge, available data, security constraints, and desired outcome. We will help assess whether an AI-based approach is technically and operationally appropriate.</p>
+
+    <div class="contact-card">
+      <p>Reach out directly by email, or start from Ayal's academic profile to learn more about the research background behind our approach.</p>
+      <p class="contact-emails">
+        <a href="mailto:ayal.s.klein@gmail.com">ayal.s.klein@gmail.com</a> &nbsp;·&nbsp;
+        <a href="mailto:yishainstern@gmail.com">yishainstern@gmail.com</a>
+      </p>
+      <div class="contact-actions">
+        <a href="mailto:ayal.s.klein@gmail.com" class="btn btn-primary">Email the Team</a>
+        <a href="index.html" class="btn btn-outline">View Ayal's Academic Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-name">Dr. Ayal Klein &amp; Yishai Stern</p>
+  <p>Applied AI Systems &nbsp;·&nbsp; Hosted on GitHub Pages &nbsp;·&nbsp; <span id="footerYear"></span></p>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function () {
+    var links = document.getElementById('navLinks');
+    var expanded = links.classList.toggle('open');
+    this.setAttribute('aria-expanded', expanded);
+  });
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
