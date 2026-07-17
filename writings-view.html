@@ -106,6 +106,25 @@
     .fallback p { color: var(--muted); margin-bottom: 1rem; line-height: 1.7; }
     .fallback a { color: var(--accent); font-weight: 600; text-decoration: none; }
     .fallback a:hover { text-decoration: underline; }
+
+    .loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: .95rem;
+      gap: .6rem;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid #c9b8a3;
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -120,6 +139,7 @@
 </header>
 
 <div class="viewer-wrap">
+  <div class="loading" id="loading"><span class="spinner"></span> טוען מסמך…</div>
   <iframe id="pdf-frame" title="PDF viewer"></iframe>
 </div>
 
@@ -147,14 +167,27 @@
     downloadLink.href = fileUrl;
     downloadLink.setAttribute("download", filename);
 
-    document.getElementById("pdf-frame").src = fileUrl;
     document.getElementById("fallback-link").href = fileUrl;
 
-    // If the iframe hasn't managed to show anything after a while (e.g. a
-    // browser with no built-in PDF renderer), surface the direct-link fallback.
-    setTimeout(() => {
-      document.getElementById("fallback").style.display = "block";
-    }, 4000);
+    // raw.githubusercontent.com serves PDFs with a Content-Disposition that
+    // forces a save-as prompt on direct navigation, so instead of pointing
+    // the iframe straight at fileUrl, fetch the bytes ourselves and hand the
+    // iframe a same-origin blob URL with an explicit application/pdf type.
+    fetch(fileUrl)
+      .then(res => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.blob();
+      })
+      .then(rawBlob => {
+        const blob = rawBlob.slice(0, rawBlob.size, "application/pdf");
+        const blobUrl = URL.createObjectURL(blob);
+        document.getElementById("pdf-frame").src = blobUrl;
+        document.getElementById("loading").style.display = "none";
+      })
+      .catch(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("fallback").style.display = "block";
+      });
   }
 </script>
 
