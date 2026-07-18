@@ -85,27 +85,50 @@
     section { padding: 3rem 2rem 4.5rem; }
     .container { max-width: 900px; margin: 0 auto; }
 
+    .list-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .toggle-all-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--ink-mid);
+      font-family: inherit;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: .5rem 1rem;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+    }
+    .toggle-all-btn:hover { border-color: var(--accent-light); color: var(--accent); }
+    .toggle-all-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+    .toggle-all-btn.all-open svg { transform: rotate(180deg); }
+
     .writings-list {
       display: flex;
       flex-direction: column;
       gap: .9rem;
     }
     .writing-card {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1rem 1.3rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: transform .15s, box-shadow .15s, border-color .15s;
+      transition: box-shadow .15s, border-color .15s;
     }
     .writing-card:hover {
-      transform: translateY(-2px);
       box-shadow: var(--shadow);
       border-color: var(--accent-light);
+    }
+    .writing-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.3rem;
     }
     .writing-icon {
       flex-shrink: 0;
@@ -120,12 +143,57 @@
       font-weight: 600;
       color: var(--ink);
       flex: 1;
+      text-decoration: none;
     }
+    .writing-title:hover { color: var(--accent); }
     .writing-arrow {
       color: var(--muted);
       font-size: 1.1rem;
       flex-shrink: 0;
+      text-decoration: none;
     }
+    .summary-toggle {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .summary-toggle:hover { background: #f3e6d8; color: var(--accent); border-color: var(--accent-light); }
+    .summary-toggle svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+    .writing-card.open .summary-toggle svg { transform: rotate(180deg); }
+
+    .writing-summary {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .25s ease;
+    }
+    .writing-card.open .writing-summary { grid-template-rows: 1fr; }
+    .writing-summary-inner { overflow: hidden; }
+    .writing-summary-content {
+      padding: 0 1.3rem 1.3rem 1.3rem;
+      border-top: 1px solid var(--border);
+      margin: 0 1.3rem;
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .writing-subtitle {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: .92rem;
+      margin: 1rem 0 .5rem;
+    }
+    .writing-summary-content p.body {
+      color: var(--muted);
+      font-size: .93rem;
+      line-height: 1.85;
+      margin-bottom: 0;
+    }
+    .writing-summary-content p.body:first-child { margin-top: 1rem; }
 
     footer {
       background: var(--ink);
@@ -157,6 +225,12 @@
 
 <section>
   <div class="container">
+    <div class="list-toolbar">
+      <button class="toggle-all-btn" id="toggle-all">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        <span id="toggle-all-label">הצג תקצירים</span>
+      </button>
+    </div>
     <div class="writings-list" id="writings-list"></div>
   </div>
 </section>
@@ -166,49 +240,193 @@
 </footer>
 
 <script>
-  // Filenames as they exist in the kleinay/Religious-Philosophical-Writings repo (branch: main)
+  // Filenames as they exist in the kleinay/Religious-Philosophical-Writings repo (branch: main),
+  // each with an optional subtitle + summary written by the author.
   const files = [
-    "אל האני ומעבר לו.pdf",
-    "אמנות הדיאלוג בעידן של תקשורת.pdf",
-    "ההזדמנות שבחוסר ההתחברות.pdf",
-    "החכמה בקהלת.pdf",
-    "הטוב והקודש.pdf",
-    "זמנים מתים וחשיבה חופשית.pdf",
-    "טוב להודות.pdf",
-    "לאהבה.pdf",
-    "למען שמו באהבה.pdf",
-    "מי אני ומה שמי.pdf",
-    "מעין עולם הבא.pdf",
-    "סוכות כבית עם הקב''ה.pdf",
-    "סוכות כמפגש צירים וכחתונה.pdf",
-    "על אידיאלים וערכים.pdf",
-    "על הורים וילדים ועל פנים בפנים.pdf",
-    "על הצניעות - לחברת הנוער המעורבת.pdf",
-    "על הצניעות - לחברת מבוגרים.pdf",
-    "על חטא שחטאנו בוידוי פה.pdf",
-    "על יראת המוות.pdf",
-    "על קולנוע.pdf",
-    "ענווה.pdf",
-    "צלם א-להים שבזולת.pdf",
-    "קול ה' בכח.pdf",
-    "שומר תבונה למצוא טוב.pdf"
+    { file: "אל האני ומעבר לו.pdf",
+      subtitle: "מסה על מלאת וחרג",
+      summary: "המסה מציעה נקודת מבט לפיה רוחשות בנפש האדם שתי שאיפות עומק תשתיתיות, באמצעותן ניתן להסביר תהליכים, מאפיינים ותסביכים נפשיים רבים. שני החלקים הראשונים, שיכולים במידה רבה להיקרא באופן עצמאי, מציגים את כל אחת משתי השאיפות באופן מפורט, תוך תיאור המרכיבים השונים שלה, הביטויים שלה בשדות חיים שונים, והמקור הרוחני שלה. החלק הראשון מצייר את שאיפת המלאות, המוגדרת כרצון לעצמאות ושלמות נפשית, ונמדדת ביכולת להיות נסמך על עצמי בלבד עבור תחושת הערך. החלק השני עוסק בחרג, דהיינו, בתשוקה הנפשית לפרוץ ממסגרת העצמי ולקשור את החיים במה ובמי שמחוצה לי. בחלק הסוגר של המאמר נידון היחס בין שתי שאיפות-היסוד." },
+
+    { file: "אמנות הדיאלוג בעידן של תקשורת.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "ההזדמנות שבחוסר ההתחברות.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "החכמה בקהלת.pdf",
+      subtitle: "אמרתי אחכמה — על החכמה במגילת קהלת",
+      summary: "מגילת קהלת מאופיינת בסתירות הפנימיות שהיא מכילה ביחס אל נושאים שונים. בין הנושאים הללו נמצאת החכמה, הזוכה להתיחסויות רבות ומגוונות. במאמר זה נצעד בעקבות שאלת היחס לחכמה במגילה, ובדרך נעבור בשאלות יסודיות בהבנת המגילה, סגנונה ותפישותיה. טענתי תהיה כי קהלת היא מונולוג קיומי-פילוסופי, ואופייה האקסיסטנציאלי שרוי הן בסגנונה והן בתכנים הייחודיים שלה. נשתדל גם לתרגם את התובנות הקיומיות של המגילה לשפה אמונית ומודרנית, הן ביחס לשאלת החכמה וההתפלספות, הן ביחס לשאלות קיום אחרות כגון השמחה, זמניות החיים ומשמעותן המתרוקנת. חתימת המאמר עוסקת ברלוונטיות המיוחדת של מגילת קהלת לעידן הפוסטמודרני." },
+
+    { file: "הטוב והקודש.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "זמנים מתים וחשיבה חופשית.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "טוב להודות.pdf",
+      subtitle: "רוחניות וההנאות הפשוטות",
+      summary: "מה המקום של הנאה ועונג בתוך השקפת עולם דתית? האם יש במונחים אלו ניגוד מהותי לשאיפות הקדושה והדבקות? במאמר, אדון בשאלות אלו ושאלות קרובות, ואתאר מסע בן שלושה שלבים לחיפוש של יישוב רעיוני-רוחני בין השאיפה הטבעית להנאה, והמרכזיות של הצורך הנפשי הזה בחיים הממשיים, לבין עקרונות ההתעלות, הרוחניות וההתמסרות שמהותיים לדתיות כדרך חיים. בתחנה הסופית של המסע המתואר אני חוזר למושג דתי בסיסי מאד - התודה - ומנסה להראות מדוע תודעה של הכרת תודה לא-ל היא המוצא הדתי הפשוט אך העמוק ביותר לבעיית הרוחניות וההנאה." },
+
+    { file: "לאהבה.pdf",
+      subtitle: "שער מאהבת אדם לאהבת א-להים",
+      summary: "אהבת הא-ל מתוארת כאחד מהפסגות האידיאליות של עבודת הא-להים, וגם כתביעה יומיומית מכל יהודי - \"ואהבת את ה' א-להיך בכל לבבך\". עם זאת, כיוון שמדובר במושג די מופשט ועמום, קשה לפעמים להצביע על הרגש המתואר במושג הזה, ועל המסלולים הרוחניים והתודעתיים שאמורים להוליך את הנפש שלנו לקראתו. בעקבות \"המשתה\" של אפלטון, המאמר מציע מבט מסוים על מושג האהבה בכלל, כפי שהוא מוכר לנו בהקשר הבין-אישי ובעיקר הרומנטי, ועל מושג אהבת הא-ל כפועל יוצא מהותי שלו." },
+
+    { file: "למען שמו באהבה.pdf",
+      subtitle: "",
+      summary: "א-להים תובע מן האדם לא רק לרתום את מעשיו לעבודתו, אלא לייחד גם את כוונת הלב בכל מעשיו לשם שמים. גם בהקשר האתי הכללי, אנו מבחינים באופן אינטואיטיבי בין כוונה מוסרית נאצלה לבין כוונה שהיא נמוכה או פסולה. אך במבט שני, הגדרת המושג \"כוונה לשם שמים\" מאתגרת ואינה טריוויאלית, מפנים רבות. במסע אחר תפיסה בהירה של כוונה זו, אציג הבחנה בין שני סוגי תיאורים של כוונה או רצון - סיבתי ותכליתני - ואטען כי הראשון עדיף אונטולוגית על האחרון. בעקבות זאת, אציע תמונה מסוימת של נפש האדם ושל מבנה הרצון. לאחר מכן אעמוד על היחס שבין אגואיזם, חסד ואהבה, ובמוקד המאמר, אטען כי הכוונה לשם שמים זהה עם מה שניתן לראותו כשורש כוח האהבה בנפש." },
+
+    { file: "מי אני ומה שמי.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "מעין עולם הבא.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "סוכות כבית עם הקב''ה.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "סוכות כמפגש צירים וכחתונה.pdf",
+      subtitle: "הזמנה לחתונה — דרוש על סוכות כמפגש",
+      summary: "הדרוש נפתח בהצגת האופי הכפול של חג הסוכות, כמשתייך לשני מעגלי החגים התורניים - שלושת הרגלים וחגי תשרי. בשלב הבא, האופי הכפול מבואר כמבטא מפגש בין שני מהלכים מטאפיזיים - העלייה של הטבע אל הא-לוהות, כפי שמתבטא במהלכם של החגים החקלאיים (שלושת הרגלים), ומאידך הירידה של הא-להי אל הטבע, כפי שמתבטא במהלכם של חגי החודש השביעי. שני התהליכים באים למיצוי ושיא בסוכות, בו אנו חוגגים את המפגש וההתיחדות של הבורא והבריאה כשמחת חתונה." },
+
+    { file: "על אידיאלים וערכים.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "על הורים וילדים ועל פנים בפנים.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "על הצניעות - לחברת הנוער המעורבת.pdf",
+      subtitle: "",
+      summary: "ישנו דיון ציבורי-דתי ער בשאלת החברה המעורבת, ובעיקר בהקשר של עיצוב חברת הנוער בתנועות הנוער. במאמר זה לא נעסוק בשאלה ה\"לכתחילה\"/\"בדיעבד\" של חברה מעורבת, אלא נחתור לשאלה מהותית אחרת, והיא - איך נראית מידת הצניעות הנדרשת מהחברה כאשר היא מעורבת, ומהאדם כאשר הוא נמצא בחברה מעורבת? אנסה לשרטט קווים לדמותה של הצניעות הבין-מינית, תוך שאני מתמקד בשוני בחוויה הנפשית הפנימית בין הימצאות בחברה מעורבת להימצאות בחברה נפרדת." },
+
+    { file: "על הצניעות - לחברת מבוגרים.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "על חטא שחטאנו בוידוי פה.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "על יראת המוות.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "על קולנוע.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "ענווה.pdf",
+      subtitle: "ותחסרהו מעט — דיון במידת הענווה",
+      summary: "למידת הענווה נודעת חשיבות רבת-משקל בעיצוב המוסרי-מידותי של האדם. שאלת ההתיחסות העצמית נידונה במאמר זה משני כיוונים: הן מצד החברה, דהיינו לאיזה מידה של כבוד ושל ערך מצפה האדם מהתיחסות הזולת כלפיו, והן מצד עצמו, דהיינו איך הוא בוחר להסתכל על עצמו ולמדוד את ערכו בעיניו. המאמר מנסה לפלס ולהאיר דרכים חדשות בתפיסת הענווה." },
+
+    { file: "צלם א-להים שבזולת.pdf",
+      subtitle: "",
+      summary: "" },
+
+    { file: "קול ה' בכח.pdf",
+      subtitle: "על \"הקווים האדומים\" שלנו בשמיעה לדבר ה'",
+      summary: "האם ניתן לדבר על מקומות בהם אנו לא מסוגלים לשמוע לדבר ה'? ואם כן, מה המשמעות הרוחנית של עובדה פסיכולוגית מעין זו, אם ישנה? מאמר זה עוסק בשאלת היחס בין דבר ה' המוחלט לבין המדיום האנושי המשיג אותו, וצועד בעיקר בעקבות דימוי האור והכלי הלקוחה מהספרות הקבלית. לאחר דיון במשמעותו של דימוי זה בהקשר של התגלות הא-להים בסיני ויחסי תורה שבכתב - תורה שבעל פה, נדון בדתיות מפרספקטיבה פסיכולוגית, ונטען כי דתיות הינה הרצון והצורך לרומם את החיים ע\"י קשירתם אל ה\"אחר\" והנשגב. נטען כי יתכנו צווים א-להיים אשר מאיימים על התודעה האנושית-דתית, עד כדי כך שלא נותר לה אלא להותיר צווים אלו מחוצה לה, כבמנגנונים פסיכולוגיים של הכחשה, על מנת לשמור על שלמותה. נדגים בהקשר קולקטיבי ואישי, ונדון בבעיית הלגיטימציה ובהשלכות של התמונה המוצעת." },
+
+    { file: "שומר תבונה למצוא טוב.pdf",
+      subtitle: "על השיקול המוסרי-קיומי בהכרעות קוגניטיביות",
+      summary: "הספק מלווה את חיינו התודעתיים כמעט בכל הקשר. בנסיבות רבות אין לנו דרך קוגניטיבית תקפה להכריע לגבי טיבה של המציאות שבפנינו, ואנו נאלצים לבחור ב\"אמונה\" מסוימת על פני חלופותיה. במאמר זה אטען כי נכון לבחור באמונה אחת על פני אחרת על סמך שיקולים מוסריים וקיומיים, דהיינו, על סמך השאלה הפרגמטית איזו הכרעה קוגניטיבית תעשה את חיינו לטובים ונכונים יותר. נמחיש את טענתנו בהקשרים של שיפוט הזולת, מידת הביטחון, אופטימיות ושאלת הספקנות הכרונית, ונסיק כי המחויבות לחיפוש האמת היא חובה מוסרית העומדת בשורה אחת עם שיקולים מוסריים אחרים." }
   ];
 
   const list = document.getElementById("writings-list");
-  files.forEach(filename => {
-    const title = filename.replace(/\.pdf$/i, "");
-    const a = document.createElement("a");
-    a.className = "writing-card";
-    a.href = "writings-view.html?f=" + encodeURIComponent(filename);
-    a.innerHTML = `
+
+  files.forEach(({ file, subtitle, summary }) => {
+    const title = file.replace(/\.pdf$/i, "");
+    const hasSummary = Boolean(summary && summary.trim());
+
+    const card = document.createElement("div");
+    card.className = "writing-card";
+
+    const row = document.createElement("div");
+    row.className = "writing-row";
+    row.innerHTML = `
       <span class="writing-icon">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       </span>
-      <span class="writing-title"></span>
-      <span class="writing-arrow">←</span>
     `;
-    a.querySelector(".writing-title").textContent = title;
-    list.appendChild(a);
+
+    const titleLink = document.createElement("a");
+    titleLink.className = "writing-title";
+    titleLink.href = "writings-view.html?f=" + encodeURIComponent(file);
+    titleLink.textContent = title;
+    row.appendChild(titleLink);
+
+    if (hasSummary) {
+      const toggleBtn = document.createElement("button");
+      toggleBtn.className = "summary-toggle";
+      toggleBtn.setAttribute("aria-expanded", "false");
+      toggleBtn.setAttribute("aria-label", "הצג/הסתר תקציר");
+      toggleBtn.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>`;
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = card.classList.toggle("open");
+        toggleBtn.setAttribute("aria-expanded", String(isOpen));
+      });
+      row.appendChild(toggleBtn);
+    } else {
+      const arrow = document.createElement("a");
+      arrow.className = "writing-arrow";
+      arrow.href = titleLink.href;
+      arrow.textContent = "←";
+      row.appendChild(arrow);
+    }
+
+    card.appendChild(row);
+
+    if (hasSummary) {
+      const summaryWrap = document.createElement("div");
+      summaryWrap.className = "writing-summary";
+      const inner = document.createElement("div");
+      inner.className = "writing-summary-inner";
+      const content = document.createElement("div");
+      content.className = "writing-summary-content";
+
+      if (subtitle && subtitle.trim()) {
+        const subtitleEl = document.createElement("p");
+        subtitleEl.className = "writing-subtitle";
+        subtitleEl.textContent = subtitle;
+        content.appendChild(subtitleEl);
+      }
+
+      const bodyEl = document.createElement("p");
+      bodyEl.className = "body";
+      bodyEl.textContent = summary;
+      content.appendChild(bodyEl);
+
+      inner.appendChild(content);
+      summaryWrap.appendChild(inner);
+      card.appendChild(summaryWrap);
+    }
+
+    list.appendChild(card);
+  });
+
+  // Master "show/hide all summaries" toggle.
+  const toggleAllBtn = document.getElementById("toggle-all");
+  const toggleAllLabel = document.getElementById("toggle-all-label");
+  let allOpen = false;
+
+  toggleAllBtn.addEventListener("click", () => {
+    allOpen = !allOpen;
+    document.querySelectorAll(".writing-card").forEach(card => {
+      const btn = card.querySelector(".summary-toggle");
+      if (!btn) return;
+      card.classList.toggle("open", allOpen);
+      btn.setAttribute("aria-expanded", String(allOpen));
+    });
+    toggleAllBtn.classList.toggle("all-open", allOpen);
+    toggleAllLabel.textContent = allOpen ? "הסתר תקצירים" : "הצג תקצירים";
   });
 </script>
 
