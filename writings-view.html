@@ -90,13 +90,14 @@
       align-items: center;
       gap: 1rem;
     }
-    .page-wrap {
+    .page-img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
       background: var(--white);
       box-shadow: 0 2px 14px rgba(44,31,24,.18);
-      max-width: 100%;
-      line-height: 0;
     }
-    .page-wrap canvas { display: block; max-width: 100%; height: auto; }
 
     .status {
       display: flex;
@@ -152,17 +153,18 @@
   <a id="fallback-link" target="_blank" rel="noopener">פתיחת הקובץ בטאב חדש ←</a>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="writings-data.js"></script>
 <script>
   const REPO_BASE = "https://raw.githubusercontent.com/kleinay/Religious-Philosophical-Writings/main/";
 
   const params = new URLSearchParams(window.location.search);
   const filename = params.get("f");
+  const entry = filename ? WRITINGS.find(w => w.file === filename) : null;
 
-  if (!filename) {
+  if (!filename || !entry) {
     window.location.href = "writings.html";
   } else {
-    const title = filename.replace(/\.pdf$/i, "");
+    const title = entry.title || filename.replace(/\.pdf$/i, "");
     const fileUrl = REPO_BASE + encodeURIComponent(filename);
 
     document.title = title + " — כתבים בהגות ורוח";
@@ -178,84 +180,39 @@
 
     function showFallback() {
       statusEl.style.display = "none";
+      pagesEl.innerHTML = "";
       document.getElementById("fallback").style.display = "block";
     }
 
-    // Render with PDF.js onto <canvas> elements instead of relying on a
-    // browser's native PDF viewer inside an <iframe> — most mobile browsers
-    // (and in-app browsers like Facebook's) either can't render an embedded
-    // PDF at all or only show its first page. Canvas rendering works the
-    // same everywhere. Pages render lazily as they scroll into view to keep
-    // memory use reasonable on longer documents.
-    if (typeof pdfjsLib === "undefined") {
+    // Pages are pre-rendered to images (see writings-pages/), rather than
+    // relying on a browser's native PDF viewer or a client-side PDF engine:
+    // both render Hebrew text inconsistently (or not at all) across mobile
+    // browsers and in-app browsers, while a plain <img> works everywhere.
+    if (!entry.slug || !entry.pages) {
       showFallback();
     } else {
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      let loaded = 0;
+      let failed = false;
 
-      fetch(fileUrl)
-        .then(res => {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          return res.arrayBuffer();
-        })
-        .then(buf => pdfjsLib.getDocument({ data: buf }).promise)
-        .then(pdf => {
-          statusEl.style.display = "none";
-
-          const maxCanvasScale = Math.min(window.devicePixelRatio || 1, 2);
-          const targetWidth = Math.min(document.documentElement.clientWidth - 32, 900);
-
-          const renderPage = (pageWrap, pageNum) => {
-            if (pageWrap.dataset.rendered) return;
-            pageWrap.dataset.rendered = "1";
-            pdf.getPage(pageNum).then(page => {
-              const baseViewport = page.getViewport({ scale: 1 });
-              const scale = targetWidth / baseViewport.width;
-              const viewport = page.getViewport({ scale: scale * maxCanvasScale });
-
-              const canvas = document.createElement("canvas");
-              canvas.width = viewport.width;
-              canvas.height = viewport.height;
-              canvas.style.width = (viewport.width / maxCanvasScale) + "px";
-              canvas.style.height = (viewport.height / maxCanvasScale) + "px";
-              pageWrap.innerHTML = "";
-              pageWrap.appendChild(canvas);
-
-              page.render({ canvasContext: canvas.getContext("2d"), viewport });
-            });
-          };
-
-          const observer = "IntersectionObserver" in window
-            ? new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                    renderPage(entry.target, Number(entry.target.dataset.pageNum));
-                  }
-                });
-              }, { rootMargin: "600px 0px" })
-            : null;
-
-          pdf.getPage(1).then(firstPage => {
-            const ratio = firstPage.getViewport({ scale: 1 }).height / firstPage.getViewport({ scale: 1 }).width;
-
-            for (let i = 1; i <= pdf.numPages; i++) {
-              const pageWrap = document.createElement("div");
-              pageWrap.className = "page-wrap";
-              pageWrap.dataset.pageNum = String(i);
-              pageWrap.style.width = targetWidth + "px";
-              pageWrap.style.height = Math.round(targetWidth * ratio) + "px";
-              pagesEl.appendChild(pageWrap);
-
-              if (i <= 2) {
-                renderPage(pageWrap, i);
-              } else if (observer) {
-                observer.observe(pageWrap);
-              } else {
-                renderPage(pageWrap, i);
-              }
-            }
-          });
-        })
-        .catch(() => showFallback());
+      for (let i = 1; i <= entry.pages; i++) {
+        const img = document.createElement("img");
+        img.className = "page-img";
+        img.src = `writings-pages/${entry.slug}/${i}.jpg`;
+        img.alt = `${title} — עמוד ${i}`;
+        img.loading = i <= 2 ? "eager" : "lazy";
+        img.decoding = "async";
+        img.addEventListener("load", () => {
+          loaded++;
+          if (statusEl.style.display !== "none") statusEl.style.display = "none";
+        });
+        img.addEventListener("error", () => {
+          if (!failed && loaded === 0) {
+            failed = true;
+            showFallback();
+          }
+        });
+        pagesEl.appendChild(img);
+      }
     }
   }
 </script>
