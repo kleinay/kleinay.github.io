@@ -254,6 +254,24 @@
       line-height: 1.75;
       color: var(--ink-mid);
     }
+    .writing-summary-en-content .en-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: .15rem;
+    }
+    .writing-summary-en-content .en-subtitle {
+      font-style: italic;
+      color: var(--accent);
+      font-size: .85rem;
+      margin-bottom: .3rem;
+    }
+    .writing-summary-en-content .en-meta {
+      font-family: 'Heebo', sans-serif;
+      font-size: .74rem;
+      color: var(--muted);
+      margin-bottom: .7rem;
+    }
 
     footer {
       background: var(--ink);
@@ -305,7 +323,7 @@
 
   const list = document.getElementById("writings-list");
 
-  files.forEach(({ file, title: titleOverride, subtitle, summary, summaryEn, pages, words, translation }) => {
+  files.forEach(({ file, title: titleOverride, subtitle, summary, summaryEn, titleEn, subtitleEn, pages, words, translation }) => {
     const title = titleOverride || file.replace(/\.pdf$/i, "");
     const hasSummary = Boolean(summary && summary.trim());
 
@@ -399,7 +417,36 @@
         enInner.className = "writing-summary-en-inner";
         const enContent = document.createElement("div");
         enContent.className = "writing-summary-en-content";
-        enContent.textContent = summaryEn;
+
+        const enTitleText = (translation && translation.title) || titleEn;
+        if (enTitleText) {
+          const enTitleEl = document.createElement("p");
+          enTitleEl.className = "en-title";
+          enTitleEl.textContent = enTitleText;
+          enContent.appendChild(enTitleEl);
+        }
+
+        const enSubtitleText = (translation && translation.subtitle) || subtitleEn;
+        if (enSubtitleText && enSubtitleText.trim()) {
+          const enSubtitleEl = document.createElement("p");
+          enSubtitleEl.className = "en-subtitle";
+          enSubtitleEl.textContent = enSubtitleText;
+          enContent.appendChild(enSubtitleEl);
+        }
+
+        if (pages && words) {
+          const WPM_EN = 200;
+          const enMinutes = Math.max(1, Math.round(words / WPM_EN));
+          const enPages = (translation && translation.pages) || pages;
+          const enMetaEl = document.createElement("p");
+          enMetaEl.className = "en-meta";
+          enMetaEl.textContent = `${enPages} pages · ~${enMinutes} min read`;
+          enContent.appendChild(enMetaEl);
+        }
+
+        const enBodyEl = document.createElement("p");
+        enBodyEl.textContent = summaryEn;
+        enContent.appendChild(enBodyEl);
         enInner.appendChild(enContent);
         enWrap.appendChild(enInner);
         content.appendChild(enWrap);
