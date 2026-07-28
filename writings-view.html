@@ -80,6 +80,18 @@
     }
     .top-download:hover { background: var(--accent-light); }
     .top-download svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .top-lang {
+      color: #d9c6b3;
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 6px;
+      padding: .3rem .55rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .top-lang:hover { color: #fff; border-color: #fff; }
 
     .pages {
       max-width: 900px;
@@ -139,9 +151,10 @@
 <header class="top">
   <a href="writings.html" class="top-back">← רשימת הכתבים</a>
   <span class="top-title" id="doc-title"></span>
+  <a class="top-lang" id="lang-link" style="display:none;"></a>
   <a class="top-download" id="download-link" download>
     <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    הורדה
+    <span id="download-label">הורדה</span>
   </a>
 </header>
 
@@ -160,20 +173,58 @@
   const params = new URLSearchParams(window.location.search);
   const filename = params.get("f");
   const entry = filename ? WRITINGS.find(w => w.file === filename) : null;
+  const wantsEnglish = params.get("lang") === "en";
+  const showEnglish = wantsEnglish && entry && entry.translation;
 
   if (!filename || !entry) {
     window.location.href = "writings.html";
   } else {
-    const title = entry.title || filename.replace(/\.pdf$/i, "");
-    const fileUrl = REPO_BASE + encodeURIComponent(filename);
+    const heTitle = entry.title || filename.replace(/\.pdf$/i, "");
+    const title = showEnglish ? entry.translation.title : heTitle;
+    const pagesFolder = showEnglish ? `writings-pages-en/${entry.translation.slug}` : `writings-pages/${entry.slug}`;
+    const pageCount = showEnglish ? entry.translation.pages : entry.pages;
+    // Hebrew PDFs live in the separate source repo and are fetched by URL;
+    // English translations are typeset locally, so their PDF ships alongside
+    // the page images right here in this repo.
+    const fileUrl = showEnglish
+      ? `${pagesFolder}/document.pdf`
+      : REPO_BASE + encodeURIComponent(filename);
 
     document.title = title + " — כתבים בהגות ורוח";
-    document.getElementById("doc-title").textContent = title;
+    document.documentElement.dir = showEnglish ? "ltr" : "rtl";
+    const titleEl = document.getElementById("doc-title");
+    titleEl.textContent = title;
+    titleEl.dir = showEnglish ? "ltr" : "rtl";
 
     const downloadLink = document.getElementById("download-link");
     downloadLink.href = fileUrl;
-    downloadLink.setAttribute("download", filename);
+    downloadLink.setAttribute("download", showEnglish ? `${title}.pdf` : filename);
+    document.getElementById("download-label").textContent = showEnglish ? "Download" : "הורדה";
     document.getElementById("fallback-link").href = fileUrl;
+    document.getElementById("fallback-link").textContent = showEnglish
+      ? "Open the file in a new tab →"
+      : "פתיחת הקובץ בטאב חדש ←";
+    document.querySelector(".fallback p").textContent = showEnglish
+      ? "Unable to display the document directly in this browser."
+      : "לא ניתן להציג את המסמך ישירות בדפדפן זה.";
+    document.querySelector(".top-back").textContent = showEnglish
+      ? "← Back to writings list"
+      : "← רשימת הכתבים";
+    document.querySelector("#status").lastChild.textContent = showEnglish
+      ? " Loading document…"
+      : " טוען מסמך…";
+
+    const langLink = document.getElementById("lang-link");
+    if (entry.translation) {
+      langLink.style.display = "inline-block";
+      if (showEnglish) {
+        langLink.href = "writings-view.html?f=" + encodeURIComponent(filename);
+        langLink.textContent = "עברית";
+      } else {
+        langLink.href = "writings-view.html?f=" + encodeURIComponent(filename) + "&lang=en";
+        langLink.textContent = "EN";
+      }
+    }
 
     const statusEl = document.getElementById("status");
     const pagesEl = document.getElementById("pages");
@@ -184,21 +235,22 @@
       document.getElementById("fallback").style.display = "block";
     }
 
-    // Pages are pre-rendered to images (see writings-pages/), rather than
-    // relying on a browser's native PDF viewer or a client-side PDF engine:
-    // both render Hebrew text inconsistently (or not at all) across mobile
-    // browsers and in-app browsers, while a plain <img> works everywhere.
-    if (!entry.slug || !entry.pages) {
+    // Pages are pre-rendered to images (see writings-pages/ and
+    // writings-pages-en/), rather than relying on a browser's native PDF
+    // viewer or a client-side PDF engine: both render text inconsistently
+    // (or not at all) across mobile browsers and in-app browsers, while a
+    // plain <img> works everywhere.
+    if (!pageCount) {
       showFallback();
     } else {
       let loaded = 0;
       let failed = false;
 
-      for (let i = 1; i <= entry.pages; i++) {
+      for (let i = 1; i <= pageCount; i++) {
         const img = document.createElement("img");
         img.className = "page-img";
-        img.src = `writings-pages/${entry.slug}/${i}.jpg`;
-        img.alt = `${title} — עמוד ${i}`;
+        img.src = `${pagesFolder}/${i}.jpg`;
+        img.alt = showEnglish ? `${title} — page ${i}` : `${title} — עמוד ${i}`;
         img.loading = i <= 2 ? "eager" : "lazy";
         img.decoding = "async";
         img.addEventListener("load", () => {

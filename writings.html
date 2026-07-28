@@ -152,6 +152,21 @@
       color: var(--muted);
       white-space: nowrap;
     }
+    .writing-en-link {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      color: var(--accent);
+      border: 1px solid var(--accent-light);
+      border-radius: 5px;
+      padding: .12rem .45rem;
+      text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .writing-en-link:hover { background: var(--accent); color: #fff; }
     .writing-arrow {
       color: var(--muted);
       font-size: 1.1rem;
@@ -251,7 +266,7 @@
 
   const list = document.getElementById("writings-list");
 
-  files.forEach(({ file, title: titleOverride, subtitle, summary, pages, words }) => {
+  files.forEach(({ file, title: titleOverride, subtitle, summary, pages, words, translation }) => {
     const title = titleOverride || file.replace(/\.pdf$/i, "");
     const hasSummary = Boolean(summary && summary.trim());
 
@@ -271,6 +286,15 @@
     titleLink.href = "writings-view.html?f=" + encodeURIComponent(file);
     titleLink.textContent = title;
     row.appendChild(titleLink);
+
+    if (translation) {
+      const enLink = document.createElement("a");
+      enLink.className = "writing-en-link";
+      enLink.href = "writings-view.html?f=" + encodeURIComponent(file) + "&lang=en";
+      enLink.textContent = "EN";
+      enLink.title = "Read in English";
+      row.appendChild(enLink);
+    }
 
     if (pages && words) {
       const WPM = 170;
