@@ -112,8 +112,7 @@
       slug: "w14",
       pages: 13, words: 7840,
       subtitle: "שני מודלים של פעלתנות חיובית",
-      titleEn: "On Ideals and Values",
-      subtitleEn: "Two Models of Positive Activism",
+      translation: { slug: "w14-en", pages: 20, title: "On Ideals and Values", subtitle: "Two Models of Positive Activism" },
       summary: "כיצד אפשר לשמר מחויבות לפעלתנות ערכית בעולם שמערער על מובנות מאליו של אידיאלים? המאמר עומד על הקושי המובנה שבהיות אידיאליסט - אדם המזהה משמעות שחורגת מהאני הפרטי שלו ומוכן להתמסר לה. אני מתאר ומשווה בין שני מודלים לגיבוש פעלתנות ערכית: הראשון, שאני מכנה אידיאליזם, מוכר בעיקר מתנועות נוער ומסגרות קהילתיות, נשען על מחויבות למסגרת פעולה אידיאולוגית ולקבוצת שייכות; והשני, אוטונומי וספקני יותר, מבוסס על עיצוב עצמאי של מערך ערכים מתוך התבוננות אישית. אני דן ביתרונות ובחסרונות של כל מודל, ובאפשרות לגשר ביניהם.",
       summaryEn: "How can one preserve a commitment to value-driven action in a world that undermines the self-evidence of ideals? The essay examines the built-in difficulty of being an idealist -- a person who identifies meaning that exceeds his private self and is willing to devote himself to it. I describe and compare two models for forming value-driven action: the first, which I call idealism, familiar mainly from youth movements and communal frameworks, rests on commitment to an ideological framework of action and to a group of belonging; the second, more autonomous and skeptical, is based on the independent shaping of a system of values out of personal reflection. I discuss the advantages and disadvantages of each model, and the possibility of bridging between them." },
 
