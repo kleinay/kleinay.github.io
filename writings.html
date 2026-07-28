@@ -216,6 +216,45 @@
     }
     .writing-summary-content p.body:first-child { margin-top: 1rem; }
 
+    .summary-en-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      margin-top: .8rem;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-family: inherit;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+    .summary-en-toggle:hover { color: var(--accent-light); text-decoration: underline; }
+    .summary-en-toggle svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+    .summary-en-toggle.open svg { transform: rotate(180deg); }
+
+    .writing-summary-en {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .25s ease;
+    }
+    .writing-summary-en.open { grid-template-rows: 1fr; }
+    .writing-summary-en-inner { overflow: hidden; }
+    .writing-summary-en-content {
+      margin-top: .8rem;
+      padding: .9rem 1rem;
+      background: var(--bg);
+      border-inline-start: 3px solid var(--accent-light);
+      border-radius: 6px;
+      direction: ltr;
+      text-align: left;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: .88rem;
+      line-height: 1.75;
+      color: var(--ink-mid);
+    }
+
     footer {
       background: var(--ink);
       color: #a68d78;
@@ -266,7 +305,7 @@
 
   const list = document.getElementById("writings-list");
 
-  files.forEach(({ file, title: titleOverride, subtitle, summary, pages, words, translation }) => {
+  files.forEach(({ file, title: titleOverride, subtitle, summary, summaryEn, pages, words, translation }) => {
     const title = titleOverride || file.replace(/\.pdf$/i, "");
     const hasSummary = Boolean(summary && summary.trim());
 
@@ -345,6 +384,33 @@
       bodyEl.className = "body";
       bodyEl.textContent = summary;
       content.appendChild(bodyEl);
+
+      if (summaryEn && summaryEn.trim()) {
+        const enToggle = document.createElement("button");
+        enToggle.className = "summary-en-toggle";
+        enToggle.type = "button";
+        enToggle.setAttribute("aria-expanded", "false");
+        enToggle.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg><span>Read abstract in English</span>`;
+        content.appendChild(enToggle);
+
+        const enWrap = document.createElement("div");
+        enWrap.className = "writing-summary-en";
+        const enInner = document.createElement("div");
+        enInner.className = "writing-summary-en-inner";
+        const enContent = document.createElement("div");
+        enContent.className = "writing-summary-en-content";
+        enContent.textContent = summaryEn;
+        enInner.appendChild(enContent);
+        enWrap.appendChild(enInner);
+        content.appendChild(enWrap);
+
+        enToggle.addEventListener("click", () => {
+          const isOpen = enWrap.classList.toggle("open");
+          enToggle.classList.toggle("open", isOpen);
+          enToggle.setAttribute("aria-expanded", String(isOpen));
+          enToggle.querySelector("span").textContent = isOpen ? "Hide English abstract" : "Read abstract in English";
+        });
+      }
 
       inner.appendChild(content);
       summaryWrap.appendChild(inner);
