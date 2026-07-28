@@ -31,8 +31,7 @@
       pages: 13, words: 7198,
       title: "אמרתי אחכמה",
       subtitle: "על החכמה במגילת קהלת",
-      titleEn: "I Said, I Will Be Wise",
-      subtitleEn: "On Wisdom in the Book of Ecclesiastes",
+      translation: { slug: "w04-en", pages: 18, title: "Wise, and Far From Me", subtitle: "On Wisdom in the Book of Ecclesiastes" },
       summary: "מגילת קהלת מאופיינת בסתירות הפנימיות שהיא מכילה ביחס אל נושאים שונים. בין הנושאים הללו נמצאת החכמה, הזוכה להתיחסויות רבות ומגוונות. במאמר זה נצעד בעקבות שאלת היחס לחכמה במגילה, ובדרך נעבור בשאלות יסודיות בהבנת המגילה, סגנונה ותפישותיה. טענתי תהיה כי קהלת היא מונולוג קיומי-פילוסופי, ואופייה האקסיסטנציאלי שרוי הן בסגנונה והן בתכנים הייחודיים שלה. נשתדל גם לתרגם את התובנות הקיומיות של המגילה לשפה אמונית ומודרנית, הן ביחס לשאלת החכמה וההתפלספות, הן ביחס לשאלות קיום אחרות כגון השמחה, זמניות החיים ומשמעותן המתרוקנת. חתימת המאמר עוסקת ברלוונטיות המיוחדת של מגילת קהלת לעידן הפוסטמודרני.",
       summaryEn: "The book of Ecclesiastes (Kohelet) is characterized by the internal contradictions it contains regarding various subjects. Among these subjects is wisdom, which receives many and varied treatments. In this essay we follow the question of the book's attitude toward wisdom, and along the way pass through foundational questions in understanding the book, its style and its conceptions. My argument will be that Kohelet is an existential-philosophical monologue, and that its existential character resides both in its style and in its distinctive content. We will also try to translate the book's existential insights into a modern, faith-based language, both regarding the question of wisdom and philosophizing, and regarding other existential questions such as joy, the transience of life and its draining meaning. The essay closes by addressing the special relevance of Ecclesiastes to the postmodern age." },
 
@@ -96,8 +95,7 @@
       slug: "w12",
       pages: 3, words: 1609,
       subtitle: "לגור איתו בסוכה — על הטורדנות ההלכתית כחוויה דתית",
-      titleEn: "Sukkot as a Home with the Holy One",
-      subtitleEn: "Dwelling with Him in the Sukkah — On Halakhic Burden as Religious Experience",
+      translation: { slug: "w12-en", pages: 5, title: "Sukkot as a Home with the Holy One", subtitle: "Dwelling with Him in the Sukkah — On Halakhic Burden as Religious Experience" },
       summary: "איך להתמודד עם ההיבט הטורדני של הלכות סוכה ואיך שהן חוסמות ומגבילות את ההיבטים הכי בסיסיים בחיים? המאמר טוען שההלכה המכבידה של חג הסוכות מבטאת מסר תיאולוגי: את המעבר מיחסי \"ביקור\" ליחסי \"מגורים משותפים\" עם הקב\"ה. בעקבות דימוי האהבה הזוגית שבשיר השירים, אני עומד על ההבדל שבין קִרבה חגיגית ונקודתית לבין שהות רציפה, ומראה כיצד הסוכה - על שלל פרטי הלכותיה - מבקשת מאיתנו לחוות דווקא את השגרה היומיומית המשותפת וההקרבה שבשגרה המשותפת הזו כשיא הקִרבה הדתית.",
       summaryEn: "How should we relate to the burdensome aspect of the laws of the sukkah, and the way they block and restrict the most basic aspects of life? The essay argues that the demanding halakha of the festival of Sukkot expresses a theological message: the shift from a relationship of \"visiting\" to one of \"living together\" with the Holy One. Following the image of conjugal love in the Song of Songs, I examine the difference between festive, momentary closeness and continuous dwelling-together, and show how the sukkah -- through its many halakhic details -- asks us to experience the shared daily routine, and the sacrifice within that shared routine, as the summit of religious closeness." },
 
