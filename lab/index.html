@@ -162,6 +162,29 @@
     }
     .rline-horizon::before { content: "→"; flex-shrink: 0; }
 
+    /* ── News ── */
+    #news { background: var(--white); }
+    .news-list { display: flex; flex-direction: column; gap: 0; max-width: 780px; }
+    .news-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-date {
+      flex-shrink: 0;
+      width: 90px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .news-text { font-size: .92rem; color: var(--text); line-height: 1.65; }
+    .news-text a { color: var(--teal); font-weight: 500; text-decoration: none; }
+    .news-text a:hover { text-decoration: underline; }
+
     /* ── Projects ── */
     #projects { background: var(--white); }
     .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.3rem; }
@@ -232,6 +255,7 @@
   <a href="index.html" class="nav-logo">NLP for Human Sciences Lab</a>
   <ul class="nav-links">
     <li><a href="members.html">Members</a></li>
+    <li><a href="#news">News</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#involved">Join Us</a></li>
@@ -252,6 +276,28 @@
     <a href="#projects" class="btn btn-outline">Active Projects</a>
   </div>
 </div>
+
+<!-- News -->
+<section id="news">
+  <div class="container">
+    <p class="section-label">News</p>
+    <h2 class="section-title">Latest Updates</h2>
+    <div class="divider"></div>
+    <div class="news-list">
+
+      <div class="news-item">
+        <p class="news-date">Aug 2026</p>
+        <p class="news-text">Our paper "Evaluating Large Language Models versus Human Therapists in Generating Interventions for Patients with Depression in Psychodynamic Psychotherapy" (Bar-Shachar, Rafael, Goel, Klein, Gurevych &amp; Atzil-Slonim) has been accepted at the <em>Journal of Consulting and Clinical Psychology</em>.</p>
+      </div>
+
+      <div class="news-item">
+        <p class="news-date">Aug 2026</p>
+        <p class="news-text">Our paper "A Comparative Evaluation of LLM-Generated and Clinician-Written Psychotherapy Session Summaries" (Keren, Bar-Shachar, Klein, Liakata &amp; Atzil-Slonim) has been accepted at <em>Psychotherapy Research</em>.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- Mission -->
 <section id="mission">
