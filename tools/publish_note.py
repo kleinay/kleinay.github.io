@@ -20,6 +20,7 @@ import re
 import sys
 
 SITE = pathlib.Path(__file__).resolve().parent.parent / "notes-24ddee3338"
+SITE_URL = "https://kleinay.github.io/notes-24ddee3338"
 
 ESCAPED = r"\\([\\`*_{}\[\]()#+\-.!<>|$~=&])"
 CODE_START = re.compile(r"^(import |from \w[\w.]* import |def |class |@\w+$|\s{4}\S)")
@@ -145,10 +146,26 @@ def split_front(body):
     return title, byline, rest, summary
 
 
-def convert(raw, doc_title):
-    # Unescape first: the trailer is written "\--- WAB-STATE \---" in the export,
-    # so it only matches once the backslashes are gone.
-    body = tidy(fix_blank_header_tables(refence_code(strip_state_trailer(unescape(raw)))))
+def looks_like_docs_export(text):
+    """Docs escapes punctuation that never needs escaping in hand-written markdown.
+
+    `\\-`, `\\=` and `\\.` are the giveaways: LaTeX has no such sequences, so their
+    presence means we are reading an export and must undo the escaping. Source
+    markdown straight from the generator must NOT be unescaped, because there
+    `\\[`, `\\{` and `\\_` are real LaTeX the reader needs.
+    """
+    return sum(text.count(m) for m in (r"\-", r"\=", r"\.")) >= 3
+
+
+def convert(raw, doc_title, source="auto"):
+    if source == "auto":
+        source = "docs" if looks_like_docs_export(raw) else "markdown"
+    if source == "docs":
+        # Unescape first: the trailer is written "\--- WAB-STATE \---" in the
+        # export, so it only matches once the backslashes are gone. Code blocks
+        # arrive flattened into paragraphs and need re-fencing.
+        raw = refence_code(unescape(raw))
+    body = tidy(fix_blank_header_tables(strip_state_trailer(raw)))
     title, byline, rest, summary = split_front(body)
     if title is None:  # fall back to the Drive filename after the date prefix
         title = re.sub(r"^WeeklyAutoBlog\s+\d{4}-\d{2}-\d{2}\s*-\s*", "", doc_title).strip()
@@ -190,6 +207,12 @@ def main():
     ap.add_argument("--doc-id", default="")
     ap.add_argument("--date", default="")
     ap.add_argument("--slug", default="")
+    ap.add_argument(
+        "--source",
+        choices=("auto", "docs", "markdown"),
+        default="auto",
+        help="auto-detects a Google Docs export vs. source markdown",
+    )
     args = ap.parse_args()
 
     date = args.date
@@ -198,7 +221,7 @@ def main():
         date = m.group(1) if m else datetime.date.today().isoformat()
 
     raw = args.raw.read_text(encoding="utf-8")
-    title, byline, body, summary = convert(raw, args.doc_title)
+    title, byline, body, summary = convert(raw, args.doc_title, args.source)
     slug = args.slug or slugify(title)
 
     post = {
@@ -212,8 +235,15 @@ def main():
     }
     write_post(post)
     rebuild_index()
-    print(f"{slug}\t{title}")
-    print(f"/notes-24ddee3338/p/{slug}/")
+    print(json.dumps({
+        "slug": slug,
+        "title": title,
+        "byline": post["byline"],
+        "summary": summary,
+        "date": date,
+        "url": f"{SITE_URL}/p/{slug}/",
+        "index_url": f"{SITE_URL}/",
+    }, ensure_ascii=False))
 
 
 if __name__ == "__main__":
