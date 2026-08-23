@@ -146,7 +146,9 @@ def split_front(body):
 
 
 def convert(raw, doc_title):
-    body = tidy(fix_blank_header_tables(refence_code(unescape(strip_state_trailer(raw)))))
+    # Unescape first: the trailer is written "\--- WAB-STATE \---" in the export,
+    # so it only matches once the backslashes are gone.
+    body = tidy(fix_blank_header_tables(refence_code(strip_state_trailer(unescape(raw)))))
     title, byline, rest, summary = split_front(body)
     if title is None:  # fall back to the Drive filename after the date prefix
         title = re.sub(r"^WeeklyAutoBlog\s+\d{4}-\d{2}-\d{2}\s*-\s*", "", doc_title).strip()

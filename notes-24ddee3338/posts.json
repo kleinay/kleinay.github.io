@@ -14,6 +14,48 @@
   "date": "2026-08-21"
  },
  {
+  "slug": "the-only-dense-reward-that-is-free",
+  "title": "The Only Dense Reward That Is Free",
+  "byline": "10 min read - 2,599 words",
+  "summary": "In October 2024 a paper on reinforcement learning for LLM reasoning reported that adding a process reward model on top of a verifiable outcome reward made training collapse, and that two patches rescued it. The second, which the authors...",
+  "date": "2026-08-19"
+ },
+ {
+  "slug": "the-atom-was-never-a-direction",
+  "title": "The Atom Was Never a Direction",
+  "byline": "10 min read - 2,522 words",
+  "summary": "Every sparse autoencoder trained on a language model encodes the same unexamined commitment: a feature is a ray. Latent i contributes zi(x),di to the reconstruction, one scalar times one fixed unit vector di in mathbb{R}^d, and the...",
+  "date": "2026-08-17"
+ },
+ {
+  "slug": "dirty-ocr-is-not-noise",
+  "title": "Dirty OCR Is Not Noise. It Is a Tilt.",
+  "byline": "10 min read - 2,599 words",
+  "summary": "A cultural-analytics result almost always terminates in a frequency: the share of tokens in some lexicon, the prevalence of a topic, entities per million words, the cosine between two decade centroids. And almost always the optical...",
+  "date": "2026-08-15"
+ },
+ {
+  "slug": "safe-at-every-turn-harmful",
+  "title": "Safe at Every Turn, Harmful in the Limit",
+  "byline": "10 min read - 2,597 words",
+  "summary": "Two results from this spring look like they contradict each other. One finds that safety-aligned models intervene far too little: embed a user's distress inside a delusional frame and the rate of protective action drops by up to 4.5×,...",
+  "date": "2026-08-13"
+ },
+ {
+  "slug": "the-shrinkage-estimator-hiding-in-your-denoiser",
+  "title": "The Shrinkage Estimator Hiding in Your Denoiser",
+  "byline": "10 min read - 2,414 words",
+  "summary": "A statistician holding five thousand noisy effect estimates and an engineer training a text-to-image model are, at the level of the estimator, computing the same object: the posterior mean of a latent quantity under a prior neither of...",
+  "date": "2026-08-11"
+ },
+ {
+  "slug": "the-silicon-sample-gets-the-mean-right",
+  "title": "The Silicon Sample Gets the Mean Right and the Variance Wrong",
+  "byline": "10 min read - 2,524 words",
+  "summary": "Prompt a language model with a demographic backstory, ask it a survey item, repeat a few thousand times, and compare the aggregate to the real survey. The aggregate will often look good. Three preprints from the last four months,...",
+  "date": "2026-08-09"
+ },
+ {
   "slug": "conformal-prediction-covers-on-average",
   "title": "Conformal Prediction Covers on Average. That Is Rarely What You Wanted.",
   "byline": "10 min read - 2,416 words",
