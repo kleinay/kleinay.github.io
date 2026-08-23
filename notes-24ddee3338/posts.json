@@ -1,0 +1,23 @@
+[
+ {
+  "slug": "your-spectral-clustering-found-the-degree-sequence",
+  "title": "Your Spectral Clustering Found the Degree Sequence",
+  "byline": "10 min read - 2,512 words",
+  "summary": "Spectral clustering is the most-taught unsupervised method that nobody checks. You build an adjacency matrix, take the top K eigenvectors, run k-means on the rows, and report a partition. The partition always exists. The question worth...",
+  "date": "2026-08-23"
+ },
+ {
+  "slug": "acceleration-is-a-ratio-you-chose",
+  "title": "Acceleration Is a Ratio. You Chose the Denominator.",
+  "byline": "10 min read - 2,599 words",
+  "summary": "On 19 January 2026, Nature issued an Author Correction to the A-Lab paper — the 2023 result in which a closed-loop robotic laboratory synthesised dozens of inorganic compounds in seventeen days. The PubMed record still carries the...",
+  "date": "2026-08-21"
+ },
+ {
+  "slug": "conformal-prediction-covers-on-average",
+  "title": "Conformal Prediction Covers on Average. That Is Rarely What You Wanted.",
+  "byline": "10 min read - 2,416 words",
+  "summary": "A split conformal interval at level alpha = 0.1 will contain the truth 90% of the time. The statement is exactly true, finite-sample, and requires almost nothing of your model. It is also doing far less work than most people deploying...",
+  "date": "2026-08-06"
+ }
+]
