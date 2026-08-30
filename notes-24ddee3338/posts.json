@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-novelty-mirage-when-llm-judges-grade",
+  "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
+  "byline": "10 min read - 2,430 words",
+  "summary": "In August 2024 Sakana AI published The AI Scientist, a pipeline that reads a problem statement, produces an idea, writes the code that tests it, then drafts and reviews the paper it just wrote. The demo made two claims that sat uneasily...",
+  "date": "2026-08-29"
+ },
+ {
   "slug": "your-spectral-clustering-found-the-degree-sequence",
   "title": "Your Spectral Clustering Found the Degree Sequence",
   "byline": "10 min read - 2,512 words",
