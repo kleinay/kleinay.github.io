@@ -1,5 +1,12 @@
 [
  {
+  "slug": "clinic-grade-llm-audits-in-mental-health",
+  "title": "Clinic-Grade LLM Audits in Mental Health: What the First Wave Found",
+  "byline": "7 min read - 1,805 words",
+  "summary": "A frontier LLM's safety card is, in effect, a document about what the model refuses to say. The current generation refuses the obvious things, and in the standard safety evaluations that is counted as \"safe.\" Over the last five months a...",
+  "date": "2026-10-11"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
