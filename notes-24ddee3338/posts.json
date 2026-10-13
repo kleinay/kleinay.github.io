@@ -1,5 +1,12 @@
 [
  {
+  "slug": "temperature-scaling-fits-one-parameter-calibration",
+  "title": "Temperature Scaling Fits One Parameter. Calibration Is a Function.",
+  "byline": "9 min read - 2,325 words",
+  "summary": "A classifier is calibrated when its probability outputs track the frequencies they report. If across the inputs the model assigns probability 0.8, 80% of them really do belong to the positive class, the model is well calibrated at 0.8....",
+  "date": "2026-10-13"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
