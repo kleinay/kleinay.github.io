@@ -44,7 +44,7 @@ Tseriotou, Talia, Jenny Chim, Ayal Klein, Aya Shamir, Guy Dvir, Iqra Ali, Cian K
 
 Zhang, Shiyue, David Wan, Arie Cattan, Ayal Klein, Ido Dagan, and Mohit Bansal. ["QAPyramid: Fine-grained Evaluation of Content Selection for Text Summarization."](https://arxiv.org/abs/2412.07096).  In Proceedings of the Conference on Language Modeling (COLM 2025). Association for Computational Linguistics. 2025.
 
-Triantafyllopoulos, Andreas, Yannik Terhorst, Iosif Tsangko, Florian B. Pokorny, Katrin D. Bartl-Pokorny, Lennart Seizer, Ayal Klein, Jenny Chim, Dana Atzil-Slonim, Maria Liakata, Markus Bühner, Johanna Löchner, and Björn Schuller. ["Large language models for mental health."](https://arxiv.org/abs/2411.11880) Digital Health, in press. Accepted August 9, 2026. (arXiv:2411.11880)
+Triantafyllopoulos, Andreas, Yannik Terhorst, Iosif Tsangko, Florian B. Pokorny, Katrin D. Bartl-Pokorny, Lennart Seizer, Ayal Klein, Jenny Chim, Dana Atzil-Slonim, Maria Liakata, Markus Bühner, Johanna Löchner, and Björn Schuller. ["Large language models for mental health."](https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1901454/abstract) Digital Health, in press. Accepted August 9, 2026. (arXiv:2411.11880)
 
 Roit, Paul, Aviv Slobodkin, Eran Hirsch, Arie Cattan, Ayal Klein, Valentina Pyatkin, and Ido Dagan. ["Explicating the Implicit: Argument Detection Beyond Sentence Boundaries."](https://aclanthology.org/2024.acl-long.863/) In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp. 16394–16409, Bangkok, Thailand. Association for Computational Linguistics.  2024.
 
