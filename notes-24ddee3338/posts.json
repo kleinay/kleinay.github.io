@@ -1,5 +1,12 @@
 [
  {
+  "slug": "a-pedigree-for-the-induction-head",
+  "title": "A Pedigree for the Induction Head",
+  "byline": "8 min read - 2,112 words",
+  "summary": "The claim that induction heads carry most of in-context learning in transformers has been in print for four years. In 2022 Olsson, Elhage, and twenty-odd colleagues at Anthropic laid out six lines of evidence for it and were careful to...",
+  "date": "2026-10-15"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
