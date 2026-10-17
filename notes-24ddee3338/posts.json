@@ -1,5 +1,12 @@
 [
  {
+  "slug": "cohen-s-kappa-measures-something-else",
+  "title": "Cohen's Kappa Measures Something Else",
+  "byline": "9 min read - 2,296 words",
+  "summary": "A statistic almost nobody computes by hand decides whether a benchmark reports a win. In the LLM-as-judge literature it is routine to see a judge \"agree with humans 85% of the time\" and, in the next sentence, \"with Cohen's kappa =...",
+  "date": "2026-10-17"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
