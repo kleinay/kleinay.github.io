@@ -1,5 +1,12 @@
 [
  {
+  "slug": "when-the-teacher-peeks-answer-conditioned-chains",
+  "title": "When the Teacher Peeks: Answer-Conditioned Chains Degrade Reasoning Distillation",
+  "byline": "8 min read - 1,885 words",
+  "summary": "The usual recipe for making a smaller model think like a larger one has three steps. Sample reasoning traces from a strong teacher. Keep the ones whose final answer is correct. Fine-tune the student on what you kept. The filter is the...",
+  "date": "2026-10-19"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
