@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-orthogonal-score-why-debiased-ml-s",
+  "title": "The Orthogonal Score: Why Debiased ML's Bias Multiplies Instead of Adds",
+  "byline": "7 min read - 1,845 words",
+  "summary": "Suppose you want to estimate a treatment effect theta0 in the partially linear model",
+  "date": "2026-10-21"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
