@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-modality-trap-why-2026-s-vision",
+  "title": "The Modality Trap: Why 2026's Vision-Language SAEs Need More Than Sparsity",
+  "byline": "9 min read - 2,370 words",
+  "summary": "A vision-language model threads image patches and text tokens through the same residual stream. If you train a sparse autoencoder (SAE) on that stream — the way interpretability researchers have done with language-only models since 2023...",
+  "date": "2026-10-23"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
