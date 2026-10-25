@@ -1,5 +1,12 @@
 [
  {
+  "slug": "johnson-lindenstrauss-why-random-projection-preserves",
+  "title": "Johnson–Lindenstrauss: Why Random Projection Preserves What You Care About",
+  "byline": "8 min read - 1,941 words",
+  "summary": "You have n points in mathbb{R}^d, and d is embarrassingly large: a quarter-million vocabulary features from a hashed bag-of-words, a few million one-hot interactions, a corpus of residual-stream activations at d = 4096. Yet almost...",
+  "date": "2026-10-25"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
