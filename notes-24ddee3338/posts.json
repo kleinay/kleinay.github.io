@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-process-reward-model-is-grading",
+  "title": "The Process Reward Model Is Grading the Punctuation",
+  "byline": "8 min read - 2,102 words",
+  "summary": "Hunter Lightman and colleagues at OpenAI opened the door with a clean comparison in 2023. On the MATH benchmark, a reward model trained on step-level human judgements beat one trained only on final-answer correctness, enough to solve 78...",
+  "date": "2026-10-27"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
