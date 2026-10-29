@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-poincar-ball-has-room",
+  "title": "The Poincaré Ball Has Room for Your Tree",
+  "byline": "7 min read - 1,849 words",
+  "summary": "A balanced binary tree of depth d has 2^{d+1}-1 nodes. If you try to lay those nodes out in Euclidean space so that graph distance between nodes matches Euclidean distance between their embeddings, you run out of room almost...",
+  "date": "2026-10-29"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
