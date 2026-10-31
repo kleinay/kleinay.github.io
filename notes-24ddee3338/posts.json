@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-importance-ratio-was-living",
+  "title": "The Importance Ratio Was Living at the Wrong Scale: GSPO and What It Taught Us About GRPO",
+  "byline": "7 min read - 1,854 words",
+  "summary": "A year and a half ago, GRPO looked like the final word on critic-free policy optimization for reasoning models. DeepSeekMath proposed it, DeepSeek-R1 proved it, and dozens of papers mimicked it. The idea was clean: estimate the...",
+  "date": "2026-10-31"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
