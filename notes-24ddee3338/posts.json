@@ -1,5 +1,12 @@
 [
  {
+  "slug": "a-rank-k-correction-deserves-a-rank",
+  "title": "A Rank-k Correction Deserves a Rank-k Inverse",
+  "byline": "7 min read - 1,820 words",
+  "summary": "A d times d matrix A sits in memory with its inverse — or at least a Cholesky factor — already paid for. Someone hands you a rank-k correction UCV^top, with k ll d, and asks for the inverse of A + UCV^top. The naive move, re-inverting...",
+  "date": "2026-11-01"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
