@@ -1,5 +1,12 @@
 [
  {
+  "slug": "what-the-deception-probe-is-reading",
+  "title": "What the Deception Probe Is Reading",
+  "byline": "9 min read - 2,200 words",
+  "summary": "In April 2024 Anthropic reported that a linear probe fit on a single yes/no contrast pair — \"Are you a helpful AI?\", answered no versus yes — separated honest from backdoor-triggered activations in a Claude-2-equivalent sleeper agent at...",
+  "date": "2026-11-03"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
