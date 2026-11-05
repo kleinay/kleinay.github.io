@@ -1,5 +1,12 @@
 [
  {
+  "slug": "your-encoder-is-a-compromise-the-amortisation",
+  "title": "Your Encoder Is a Compromise: The Amortisation Gap",
+  "byline": "8 min read - 1,918 words",
+  "summary": "When a textbook introduces the variational autoencoder, the encoder qphi(z mid x) is presented as a neural-network stand-in for the posterior p(z mid x), trained to minimise mathrm{KL}(qphi | p) in expectation over the data. The...",
+  "date": "2026-11-05"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
