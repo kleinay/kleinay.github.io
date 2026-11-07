@@ -1,5 +1,12 @@
 [
  {
+  "slug": "agreement-with-yourself-is-not-reliability",
+  "title": "Agreement With Yourself Is Not Reliability",
+  "byline": "8 min read - 2,073 words",
+  "summary": "A reliability figure for an LLM-annotated corpus almost always has the same shape. You pick a model, write a prompt, run it on three thousand tweets three times, and report a Fleiss' kappa between the runs. The number is high — usually...",
+  "date": "2026-11-07"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
