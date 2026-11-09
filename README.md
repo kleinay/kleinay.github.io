@@ -32,7 +32,7 @@ In my Ph.D, we have devised a natural way to break down the information conveyed
 
 ## Publications
 
-Kialy, Uri Z., Avi Shtarkberg, and Ayal Klein. ["A Universal Vibe? Finding and Controlling Language-Agnostic Informal Register with SAEs"](https://arxiv.org/abs/2603.26236) [**Under review**]. arXiv preprint arXiv:2603.26236. 2026.
+Kialy, Uri Z., Avi Shtarkberg, and Ayal Klein. ["A Universal Vibe? Finding and Controlling Language-Agnostic Informal Register with SAEs"](https://aclanthology.org/2026.emnlp-main.2200/) In Proceedings of EMNLP 2026 (Main Conference). Association for Computational Linguistics. 2026. (arXiv:2603.26236)
 
 Davidov, Jonathan, Aviv Slobodkin, Shmuel Tomi Klein, Reut Tsarfaty, Ido Dagan, and Ayal Klein. ["Effective QA-driven Annotation of Predicate-Argument Relations Across Languages"](https://aclanthology.org/2026.eacl-long.112.pdf). Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers), pages 2484–2502, Rabat, Morocco. Association for Computational Linguistics. 2026.
 
