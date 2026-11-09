@@ -1,5 +1,12 @@
 [
  {
+  "slug": "when-rho-sum-phi-x-stops-being",
+  "title": "When $\\rho(\\sum \\phi(x))$ Stops Being Universal",
+  "byline": "8 min read - 1,929 words",
+  "summary": "The permutation-invariant layer is so ordinary now that it is easy to forget it is a theorem. A set transformer, the aggregation step of almost every graph neural network, PointNet on an unordered cloud, an averaging head over retrieved...",
+  "date": "2026-11-09"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
