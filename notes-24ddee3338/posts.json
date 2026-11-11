@@ -1,5 +1,12 @@
 [
  {
+  "slug": "when-the-corrector-is-the-noise-llm",
+  "title": "When the Corrector Is the Noise: LLM OCR Repair After ICDAR 2026",
+  "byline": "8 min read - 1,933 words",
+  "summary": "Historical OCR has been a quiet bottleneck for decades. Every quantitative claim a historian or sociologist makes about a newspaper archive — the frequency of a phrase, the co-occurrence of two entities, the sentiment trajectory of a...",
+  "date": "2026-11-11"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
