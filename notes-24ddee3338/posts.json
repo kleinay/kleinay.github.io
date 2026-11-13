@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-identity-that-erases-the-partition-function",
+  "title": "The Identity That Erases the Partition Function",
+  "byline": "7 min read - 1841 words",
+  "summary": "An unnormalised density is almost never what we want. Energy-based models, product-of-experts, exponential families with intractable base measures, almost every probabilistic model written down with an exp and no apology, all come with...",
+  "date": "2026-11-13"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
