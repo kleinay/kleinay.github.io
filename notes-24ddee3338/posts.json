@@ -1,5 +1,12 @@
 [
  {
+  "slug": "density-estimation-as-logistic-regression-nce",
+  "title": "Density Estimation as Logistic Regression: NCE and What It Fathered",
+  "byline": "9 min read - 2,283 words",
+  "summary": "A probabilistic model is easy to define and hard to normalise. Write down any positive function tilde ptheta(x) = exp(ftheta(x)) you like — a Boltzmann machine, an energy-based image model, a softmax over a million-word vocabulary — and...",
+  "date": "2026-11-17"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
