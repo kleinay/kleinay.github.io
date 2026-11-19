@@ -1,5 +1,12 @@
 [
  {
+  "slug": "diffusion-language-models-after-the-2026-scaling",
+  "title": "Diffusion Language Models After the 2026 Scaling Laws",
+  "byline": "8 min read - 1,906 words",
+  "summary": "For three years the discourse around diffusion language models has oscillated between \"the successor to autoregressive generation\" and \"an elegant paper trick that does not scale.\" The empirical evidence was thin on both sides. A single...",
+  "date": "2026-11-19"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
