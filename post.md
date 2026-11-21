@@ -1,0 +1,101 @@
+# Split Conformal: The Guarantee That Holds Everywhere and Nowhere in Particular
+
+*7 min read - 1,807 words*
+
+The common demand on a machine-learning model is simple: give me the answer, and tell me how certain you are. Point estimates are not enough; a user wants an interval, a set, or a bar on a plot, with the promise that the truth falls inside some stated fraction of the time. The common response is also simple, and almost always wrong: fit a Bayesian posterior, or a quantile regression, or a softmax, and treat its output as that interval.
+
+The replacement — conformal prediction — is distribution-free, model-free, and one page of arithmetic. It turns any point predictor into a set predictor with a finite-sample, non-asymptotic coverage guarantee. The arithmetic is also the warning label, and the warning label is more subtle than the arithmetic. What you get for free is marginal coverage: a guarantee that averages over the whole distribution of $(X, Y)$. What you usually ask for in practice — "given this particular $X=x$, how often does my set contain $Y$?" — is conditional coverage, and no distribution-free procedure can give it to you.
+
+That distinction is the whole post.
+
+## Why this matters now
+
+Conformal methods were a cottage industry of the Vovk–Gammerman–Shafer line for twenty years and then, around 2020, became the default serious tool for uncertainty in supervised learning. The 2018 Lei et al. JASA paper on regression and the 2020 Romano–Sesia–Candès paper on classification pushed them into mainstream ML; the Angelopoulos–Bates tutorial made them readable without a probability PhD. By 2026 they are being used for LLM calibration — token-level prediction sets, abstention policies, hallucination control — in production. The paper you skim this week on "conformal language modelling" is almost certainly using the same split-conformal quantile from 2005.
+
+The failure mode of the moment is not technical. It is reading the coverage guarantee as a per-example promise. Papers that report "90% conformal coverage" and then draw per-instance confidence conclusions are describing something the guarantee does not say. The impossibility behind this is forty pages of measure-theoretic argument in Lei and Wasserman; the intuition is five lines.
+
+## Split conformal, in a page
+
+Let $(X_1, Y_1), \ldots, (X_n, Y_n)$ be a calibration set, held out from training. Let $f$ be any predictor fit on data disjoint from the calibration set — a neural net, a lasso, a leaked oracle, anything. Choose a nonconformity score $s(x, y)$: a function that is small when $y$ looks plausible given $x$ and large when it does not. For regression, $s(x, y) = |y - f(x)|$ is the obvious choice; for classification, $s(x, y) = 1 - \hat p_f(y \mid x)$ is the starting point, and better scores exist.
+
+Compute the scores $s_i = s(X_i, Y_i)$ on the calibration set. Let $\hat q$ be the $\lceil (n+1)(1-\alpha)\rceil$-th smallest score,
+
+$$\hat q = \text{Quantile}\!\left(\{s_1, \ldots, s_n\};\, \tfrac{\lceil (n+1)(1-\alpha)\rceil}{n}\right).$$
+
+For a fresh test point $X_{n+1}$, output the set
+
+$$C(X_{n+1}) = \{y : s(X_{n+1}, y) \le \hat q\}.$$
+
+The theorem: if $(X_1, Y_1), \ldots, (X_n, Y_n), (X_{n+1}, Y_{n+1})$ are exchangeable,
+
+$$1 - \alpha \,\le\, \mathbb{P}\!\left(Y_{n+1} \in C(X_{n+1})\right) \,\le\, 1 - \alpha + \frac{1}{n+1}.$$
+
+The upper bound needs the extra assumption that the scores are almost surely distinct; the lower bound is unconditional. Note what the probability averages over: the joint randomness of all $n+1$ pairs. The guarantee is marginal.
+
+The proof is a rank argument. By exchangeability, the rank of $s_{n+1} = s(X_{n+1}, Y_{n+1})$ among $(s_1, \ldots, s_{n+1})$ is uniform on $\{1, \ldots, n+1\}$. The event $Y_{n+1} \in C(X_{n+1})$ is the event $s_{n+1} \le \hat q$, which is the event that this rank is at most $\lceil (n+1)(1-\alpha)\rceil$. That probability is $\lceil (n+1)(1-\alpha)\rceil / (n+1) \ge 1-\alpha$. Three lines; no distributional assumption; no asymptotics.
+
+Two things are doing the work. One is exchangeability — the training-test pairs must be swappable in distribution. The other is that the quantile is a symmetric function of the data, so no part of the construction can tell which observation is the test one.
+
+## A worked anchor
+
+The 90% split-conformal regression interval is a single quantile call.
+
+```python
+import numpy as np
+
+def split_conformal_predict(f, X_cal, Y_cal, X_test, alpha=0.1):
+    s = np.abs(Y_cal - f(X_cal))
+    n = len(s)
+    k = int(np.ceil((n + 1) * (1 - alpha)))
+    q = np.sort(s)[k - 1]           # k-th smallest score
+    lo = f(X_test) - q
+    hi = f(X_test) + q
+    return lo, hi
+```
+
+Run it on a well-specified homoskedastic regression and the interval width is constant: $\hat q$ is a scalar. Run it on a heteroskedastic regression — variance grows with $|x|$ — and the interval width is still constant. Marginal coverage holds; conditional coverage does not. For small $|x|$ the interval is too wide; for large $|x|$ it is too narrow; averaged over the whole input distribution, 90% is 90%.
+
+The fix in the Lei et al. paper is to use a locally-weighted residual score, $s(x, y) = |y - f(x)| / \hat\sigma(x)$, where $\hat\sigma(x)$ is a conditional-variance estimator trained alongside $f$. The score now carries the heteroskedasticity; the quantile divides it out; the interval widens where it should. The coverage guarantee is unchanged — it comes from the rank argument, not from $\hat\sigma$ — but the shape of the set tracks the conditional problem. Choosing a score that absorbs the known structure of the data is the single most important decision in applying conformal prediction.
+
+In classification, Romano, Sesia and Candès (2020) make the same move: their Adaptive Prediction Sets (APS) score cumulates class probabilities from largest to smallest and adds classes until the cumulative mass passes the threshold. The resulting sets are large where $f$ is uncertain and small where $f$ is confident, and the marginal coverage is still exactly $1-\alpha$ by construction.
+
+A concrete number: with $n = 500$ calibration points and $\alpha = 0.1$, the quantile index is $k = \lceil 501 \cdot 0.9 \rceil = 451$, so $\hat q$ is the $451$st-smallest calibration score. Finite-sample conservativeness, $1/(n+1) \approx 0.002$, is already negligible at that scale. The absolute-residual recipe gives, in this setting, a scalar interval width equal to the $451$st-smallest absolute residual — call it roughly the $90$th percentile of calibration residuals. That interval is tight on average and wrong in a specific, principled way: too narrow for the hardest tenth of the inputs and too wide for the easiest.
+
+## What it implies in practice
+
+Four rules of thumb survive the theory honestly.
+
+One. If someone reports a conformal coverage number without saying what was held out as calibration data, read it as a training-set statistic and distrust it.
+
+Two. Marginal coverage at $1-\alpha$ averages over everything. If your task has an easy majority and a hard minority, the marginal rate is dominated by the easy majority, and coverage on the minority can be catastrophically below $1-\alpha$. "90% coverage" on a benchmark where 95% of examples are from a single class says almost nothing about the other 5%.
+
+Three. The right place to encode what you know is the score. A score aligned to the shape of the problem — heteroskedasticity, label difficulty, calibration-aware softmax tempering — produces intervals whose sizes track the underlying uncertainty. The quantile step is non-negotiable; the score is where the modelling lives.
+
+Four. Finite-sample intervals are visibly wider than asymptotic ones when $n$ is small. For $n = 100, \alpha = 0.1$ the quantile index is the 92nd-smallest score; for $n = 1000$ it is the 901st; the gap closes as $1/n$. Calibration sets of fewer than a few hundred points give usable but loose intervals.
+
+## Limits and open questions
+
+The impossibility is the sharpest result in the area. Vovk (2012) and Lei and Wasserman (2014) show that object-conditional coverage — the guarantee $\mathbb{P}(Y_{n+1} \in C(X_{n+1}) \mid X_{n+1} = x) \ge 1-\alpha$ for every $x$ — cannot be achieved by any procedure producing sets of finite expected length, without distributional assumptions. In the nonatomic case, the expected length is infinite at almost every point $x$. Barber, Candès, Ramdas and Tibshirani (2021) sharpen this to a quantitative statement with a relaxation parameter $\delta$ and show the price: to get within $\delta$ of conditional coverage you need a procedure whose intervals grow as $\delta \to 0$. The friendlier asymptotic route, pursued by Lei and Wasserman, is to add smoothness assumptions on the conditional density and let a bandwidth shrink; what you buy there is not distribution-free.
+
+The second limit is exchangeability. Any violation — covariate shift, concept drift, temporal dependence, selection bias in the calibration set — breaks the rank argument, and the marginal guarantee no longer applies. Tibshirani, Barber, Candès and Ramdas (2019) recover a weighted analogue under known covariate shift: reweighting the empirical distribution of calibration scores by the likelihood ratio $w(x) = p_\text{test}(x) / p_\text{train}(x)$ restores coverage, at the cost of a reduced effective sample size proportional to the inverse variance of the weights. The likelihood ratio has to be known or estimated, and both failure modes leak into coverage. Time-series conformal under dependence is an active and messier literature; marginal coverage under adversarial shift is not currently achievable at all.
+
+The third, genuinely open: conformal prediction gives you a set. It does not give you a probability on the elements of that set. Asking "which element inside my conformal set is most likely?" returns to Bayesian or frequentist estimation, which conformal does not do and does not claim to do. The coverage guarantee is distribution-free; any ranking inside the set is not.
+
+## Further reading
+
+- Anastasios N. Angelopoulos and Stephen Bates, *A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification*, arXiv:2107.07511, 2022. <https://arxiv.org/abs/2107.07511>. The best starting point; §2 has the split-conformal recipe with annotated code.
+- Jing Lei, Max G'Sell, Alessandro Rinaldo, Ryan J. Tibshirani and Larry Wasserman, *Distribution-Free Predictive Inference for Regression*, Journal of the American Statistical Association 113(523): 1094–1111, 2018; arXiv:1604.04173. <https://arxiv.org/abs/1604.04173>. The canonical modern treatment; the locally-weighted residual score is in §5.
+- Vladimir Vovk, *Conditional validity of inductive conformal predictors*, Machine Learning 92: 349–376, 2013; arXiv:1209.2673. <https://arxiv.org/abs/1209.2673>. The first negative result on object-conditional validity, with the suggestion to settle for approximate and asymptotic variants.
+- Rina Foygel Barber, Emmanuel J. Candès, Aaditya Ramdas and Ryan J. Tibshirani, *The Limits of Distribution-Free Conditional Predictive Inference*, Information and Inference 10(2): 455–482, 2021; arXiv:1903.04684. <https://arxiv.org/abs/1903.04684>. The quantitative impossibility theorem and its $\delta$-relaxation.
+- Ryan J. Tibshirani, Rina Foygel Barber, Emmanuel J. Candès and Aaditya Ramdas, *Conformal Prediction Under Covariate Shift*, NeurIPS 2019; arXiv:1904.06019. <https://arxiv.org/abs/1904.06019>. Weighted conformal: the recipe when exchangeability fails in a known way.
+- Yaniv Romano, Matteo Sesia and Emmanuel J. Candès, *Classification with Valid and Adaptive Coverage*, NeurIPS 2020; arXiv:2006.02544. <https://arxiv.org/abs/2006.02544>. APS: the first widely adopted conformal classification score.
+- Anastasios N. Angelopoulos, Stephen Bates, Michael I. Jordan and Jitendra Malik, *Uncertainty Sets for Image Classifiers using Conformal Prediction*, ICLR 2021; arXiv:2009.14193. <https://arxiv.org/abs/2009.14193>. RAPS — a regularised APS that shrinks the long tail of uninformative classes.
+
+--- WAB-STATE ---
+covered: conformal-prediction-marginal-vs-conditional
+area: Advanced / modern statistics
+mode: foundation
+next-candidates:
+  - Donsker–Varadhan duality: KL as a variational problem and the variance pathology of MINE
+  - Random Fourier features and the uniform approximation bound for shift-invariant kernels
+  - Wasserstein-2 and the Benamou–Brenier formula: the geometry behind optimal-transport objectives
