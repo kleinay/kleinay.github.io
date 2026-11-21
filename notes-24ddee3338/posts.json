@@ -1,5 +1,12 @@
 [
  {
+  "slug": "split-conformal-the-guarantee-that-holds-everywhere",
+  "title": "Split Conformal: The Guarantee That Holds Everywhere and Nowhere in Particular",
+  "byline": "7 min read - 1,807 words",
+  "summary": "The common demand on a machine-learning model is simple: give me the answer, and tell me how certain you are. Point estimates are not enough; a user wants an interval, a set, or a bar on a plot, with the promise that the truth falls...",
+  "date": "2026-11-21"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
