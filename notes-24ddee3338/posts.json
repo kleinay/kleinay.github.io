@@ -1,5 +1,12 @@
 [
  {
+  "slug": "necessary-isn-t-monitorable-the-2026-fracture",
+  "title": "Necessary Isn't Monitorable: The 2026 Fracture of Chain-of-Thought Oversight",
+  "byline": "8 min read - 2,052 words",
+  "summary": "In the summer of 2025, a paper from METR and collaborators made a crisp and comforting claim. If a chain of thought is necessary — if the model genuinely needs the tokens it writes to reach its answer, rather than just decorating one it...",
+  "date": "2026-11-23"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
