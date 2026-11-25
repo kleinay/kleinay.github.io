@@ -1,5 +1,12 @@
 [
  {
+  "slug": "the-variational-ceiling-why-neural-mi-estimators",
+  "title": "The Variational Ceiling: Why Neural MI Estimators Can't See Past Log N",
+  "byline": "8 min read - 2,062 words",
+  "summary": "If you have ever put mutual information in a loss and let a neural network maximise it, you have taken a position on a mathematical object that is more delicate than it looks. The Donsker–Varadhan identity makes the idea look painless....",
+  "date": "2026-11-25"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
