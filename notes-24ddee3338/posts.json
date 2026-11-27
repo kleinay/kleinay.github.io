@@ -1,5 +1,12 @@
 [
  {
+  "slug": "when-the-llm-is-the-measurement",
+  "title": "When the LLM Is the Measurement: What the 2026 Social Science Audit Asks For",
+  "byline": "8 min read - 1,968 words",
+  "summary": "A social scientist opens the file. An LLM has, for every document, produced a label — the valence of a tweet, the policy position of a speech, the frame of a news article. The next steps are familiar: aggregate, regress, report. The LLM...",
+  "date": "2026-11-27"
+ },
+ {
   "slug": "the-novelty-mirage-when-llm-judges-grade",
   "title": "The Novelty Mirage: When LLM Judges Grade LLM Hypotheses",
   "byline": "10 min read - 2,430 words",
